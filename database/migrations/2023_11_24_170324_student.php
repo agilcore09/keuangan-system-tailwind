@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('student', function (Blueprint $table) {
+        Schema::create('siswa', function (Blueprint $table) {
 
-            $table->bigIncrements('id');
-            $table->string('student_name');
+            $table->id();
+            $table->string('nama_siswa');
             $table->integer('nis')->unique();
-            $table->string('class');
+            $table->string('kelas');
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('types_id');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('types_id')->references('id')->on('types');
+            $table->unsignedBigInteger('type_id');
+            $table->foreign('category_id')->references('id')->on('category');
+            $table->foreign('type_id')->references('id')->on('type');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student');
+        Schema::dropIfExists('siswa');
     }
 };
