@@ -14,16 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('student', function (Blueprint $table) {
+
             $table->bigIncrements('id');
             $table->string('student_name');
             $table->integer('nis')->unique();
             $table->string('class');
-            $table->unsignedBigInteger('categories_id');
-            $table->foreign('categories_id')->references('categories')->on('id');
-            // $table->integer('types_id')->unsigned();
-            // $table->foreign('types_id')->references('id')->on('type');
-            $table->dateTime('created_at')->nullable();
-            $table->dateTime('updated_at')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('types_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('types_id')->references('id')->on('types');
+            $table->timestamps();
         });
     }
 

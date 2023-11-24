@@ -14,11 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+
+            $table->id();
             $table->string('major_name');
             $table->string('type');
-            $table->date('created_at')->nullable();
-            $table->date('updated_at')->nullable();
+            // $table->date('created_at')->nullable();
+            // $table->date('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 
