@@ -15,6 +15,8 @@
         @include('core.sidebar')
         @yield('content')
     </div>
+    <script src="jquery.js"></script>
+    <script src="custom.js"></script>
 </body>
 
 </html>

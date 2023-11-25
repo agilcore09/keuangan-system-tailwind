@@ -1,6 +1,6 @@
 @extends('core.index')
 @section('content')
-    <div class="bg-gray-50/50 w-full py-5 container p-10">
+    <div class="bg-gray-50/50 w-full py-5 container p-10 display">
         <form method="GET">
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
@@ -64,7 +64,7 @@
             </div>
 
             <div class="mt-6 flex items-center justify-end gap-x-6">
-                <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+                <button type="button" id="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
                 <button type="submit"
                     class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit
                 </button>
