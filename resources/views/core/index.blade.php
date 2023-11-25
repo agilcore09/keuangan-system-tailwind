@@ -11,8 +11,10 @@
 </head>
 
 <body>
-    @include('core.sidebar')
-    @yield('content')
+    <div class="container flex w-100">
+        @include('core.sidebar')
+        @yield('content')
+    </div>
 </body>
 
 </html>

@@ -16,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/home', function () {
-    return view('core.index');
+    return view('core.dashboard');
 })->middleware(['auth', 'verified']);
 
+
+Route::get('/data-siswa', function () {
+    return view('form.siswa');
+});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
