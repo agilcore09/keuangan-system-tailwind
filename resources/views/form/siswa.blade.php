@@ -1,7 +1,7 @@
 @extends('core.index')
 @section('content')
     <div class="bg-gray-50/50 w-full py-5 container p-10 display">
-        <form method="POST">
+        <form method="POST" action="{{ url('data-siswa') }}">
             @csrf
             @method('POST')
             <div class="space-y-12">
@@ -23,7 +23,7 @@
                             <label for="nama-siswa" class="block text-sm font-medium leading-6 text-gray-900">Nama
                                 Siswa </label>
                             <div class="mt-1">
-                                <input type="text" name="nama-siswa" id="nama-siswa" autocomplete="off"
+                                <input type="text" name="nama_siswa" id="nama-siswa" autocomplete="off"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                         <div class="col-span-2">
                             <label for="jurusan" class="block text-sm font-medium leading-6 text-gray-900">Jurusan</label>
                             <div class="mt-2">
-                                <select id="jurusan" name="jurusan" autocomplete="off"
+                                <select id="jurusan" name="category_id" autocomplete="off"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                     <option>Pilih Jurusan</option>
                                     @foreach ($jurusan as $datas)
@@ -57,7 +57,7 @@
                             <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Kelas
                                 Siswa</label>
                             <div class="mt-2">
-                                <select id="kelas-siswa" name="kelas-siswa" autocomplete="off"
+                                <select id="kelas-siswa" name="type_id" autocomplete="off"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                     <option>Pilih Kelas Siswa</option>
                                     @foreach ($kelasSiswa as $datas)

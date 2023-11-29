@@ -39,7 +39,15 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = new SiswaModel;
+        $input->gambar = $request->gambar;
+        $input->nama_siswa = $request->nama_siswa;
+        $input->kelas = $request->kelas;
+        $input->nis = $request->nis;
+        $input->category_id = $request->category_id;
+        $input->type_id = $request->type_id;
+
+        $input->save();
     }
 
     /**
