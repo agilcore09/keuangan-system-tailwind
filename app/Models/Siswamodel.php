@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Siswamodel extends Model
 {
-    use HasFactory;
+    protected $table = "siswa";
+
+    public function Category()
+    {
+        return $this->hasOne(CategoryModel::class, 'category_id', 'id');
+    }
 }

@@ -1,7 +1,9 @@
 @extends('core.index')
 @section('content')
     <div class="bg-gray-50/50 w-full py-5 container p-10 display">
-        <form method="GET">
+        <form method="POST">
+            @csrf
+            @method('POST')
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Tambah Data data-siswa</h2>
@@ -9,6 +11,14 @@
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
 
+                        <div class="col-span-full">
+                            <label for="foto" class="block text-sm font-medium leading-6 text-gray-900">Foto
+                                Siswa </label>
+                            <div class="mt-1">
+                                <input type="file" name="foto" id="foto" autocomplete="off"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
                         <div class="col-span-full">
                             <label for="nama-siswa" class="block text-sm font-medium leading-6 text-gray-900">Nama
                                 Siswa </label>
@@ -36,10 +46,10 @@
                             <div class="mt-2">
                                 <select id="jurusan" name="jurusan" autocomplete="off"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option></option>
-                                    <option value="">Teknik Komputer Jaringan</option>
-                                    <option value="">Teknik Kendaraan Ringan</option>
-                                    <option value="">Sekolah Menengah Pertama</option>
+                                    <option>Pilih Jurusan</option>
+                                    @foreach ($jurusan as $datas)
+                                        <option value="{{ $datas->id }}">{{ $datas->nama_jurusan }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -49,10 +59,10 @@
                             <div class="mt-2">
                                 <select id="kelas-siswa" name="kelas-siswa" autocomplete="off"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option></option>
-                                    <option value="">Siswa Biasa</option>
-                                    <option value="">Siswa Panti Asuhan</option>
-                                    <option value="">Ketua Osis </option>
+                                    <option>Pilih Kelas Siswa</option>
+                                    @foreach ($kelasSiswa as $datas)
+                                        <option value="{{ $datas->id }}">{{ $datas->type_name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

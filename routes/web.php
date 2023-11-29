@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiswaController;
+use App\Models\Siswamodel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +22,7 @@ Route::get('/home', function () {
 })->middleware(['auth', 'verified']);
 
 
-Route::get('/data-siswa', function () {
-    return view('form.siswa');
-});
+Route::resource('/data-siswa', SiswaController::class);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

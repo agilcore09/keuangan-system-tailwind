@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryModel;
 use App\Models\SiswaModel;
 use Illuminate\Http\Request;
+use App\Models\TypeModel;
+
 
 class SiswaController extends Controller
 {
@@ -14,7 +17,6 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,7 +26,9 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        $jurusan = CategoryModel::all();
+        $kelasSiswa = TypeModel::all();
+        return view('form.siswa', compact("jurusan", "kelasSiswa"));
     }
 
     /**
