@@ -6,7 +6,7 @@ use App\Models\CategoryModel;
 use App\Models\SiswaModel;
 use Illuminate\Http\Request;
 use App\Models\TypeModel;
-
+use Illuminate\Validation\Rules\File;
 
 class SiswaController extends Controller
 {
@@ -39,6 +39,16 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validate = $request->validate([
+            'gambar' => ['required', File::image()->min(0)->max(2 * 512)->dimensions(Rule::dimensions()->maxWidth(1000)->maxHeight(500))],
+            'nama_siswa' => 'required|max:50',
+            'kelas' => 'required|max:20',
+            'nis' => 'required|unique:siswa|max:10',
+            'category_id' => 'required',
+            'type_id' => 'required'
+        ]);
+
         $input = new SiswaModel;
         $input->gambar = $request->gambar;
         $input->nama_siswa = $request->nama_siswa;
@@ -46,8 +56,9 @@ class SiswaController extends Controller
         $input->nis = $request->nis;
         $input->category_id = $request->category_id;
         $input->type_id = $request->type_id;
-
         $input->save();
+
+        return redirect()->to('data-siswa');
     }
 
     /**
