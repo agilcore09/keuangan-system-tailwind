@@ -17,6 +17,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
+        return view('form.index');
     }
 
     /**
@@ -24,6 +25,7 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         $jurusan = CategoryModel::all();

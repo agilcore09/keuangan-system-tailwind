@@ -21,7 +21,6 @@ Route::get('/home', function () {
     return view('core.dashboard');
 })->middleware(['auth', 'verified']);
 
-
 Route::resource('/data-siswa', SiswaController::class);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

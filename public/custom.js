@@ -1,4 +1,4 @@
-$("#button").on("click", function (event) {
+$("#tombol-add").on("click", function (event) {
     event.preventDefault();
-    $('.display').hide("slow");
+    $('.display-table').fadeOut("slow");
 });
