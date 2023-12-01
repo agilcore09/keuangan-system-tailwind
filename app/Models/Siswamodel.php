@@ -11,6 +11,11 @@ class Siswamodel extends Model
 
     public function Category()
     {
-        return $this->hasOne(CategoryModel::class, 'category_id', 'id');
+        return $this->belongsTo(CategoryModel::class, 'category_id', 'id');
+    }
+
+    public function Type()
+    {
+        return $this->belongsTo(TypeModel::class, 'type_id', "id");
     }
 }

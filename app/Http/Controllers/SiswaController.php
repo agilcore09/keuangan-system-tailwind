@@ -17,7 +17,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('form.index');
+        $data = SiswaModel::all();
+        return view('form.index', compact("data"));
     }
 
     /**
@@ -43,7 +44,7 @@ class SiswaController extends Controller
     {
 
         $validate = $request->validate([
-            'gambar' => ['required', File::image()->min(0)->max(2 * 512)->dimensions(Rule::dimensions()->maxWidth(1000)->maxHeight(500))],
+            // 'gambar' => ['required', File::image()->min(0)->max(2 * 512)->dimensions(Rule::dimensions()->maxWidth(1000)->maxHeight(500))],
             'nama_siswa' => 'required|max:50',
             'kelas' => 'required|max:20',
             'nis' => 'required|unique:siswa|max:10',

@@ -12,6 +12,6 @@ class CategoryModel extends Model
 
     public function SiswaModel()
     {
-        return $this->hasMany(Siswamodel::class, 'id');
+        return $this->hasMany(Siswamodel::class);
     }
 }

@@ -10,4 +10,9 @@ class TypeModel extends Model
     use HasFactory;
 
     protected $table = 'type';
+
+    public function SiswaModel()
+    {
+        return $this->hasMany(Siswamodel::class);
+    }
 }
