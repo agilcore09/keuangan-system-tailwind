@@ -1,6 +1,6 @@
 @extends('core.index')
 @section('content')
-    <div class="bg-gray-50/50 w-full py-5 container p-10 display">
+    <div class="display-add bg-gray-50/50 w-full py-5 container p-10 display">
         <form method="POST" action="{{ url('data-siswa') }}">
             @csrf
             @method('POST')

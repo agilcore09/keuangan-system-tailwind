@@ -17,8 +17,10 @@ class SiswaController extends Controller
      */
     public function index()
     {
+        $jurusan = CategoryModel::all();
+        $kelasSiswa = TypeModel::all();
         $data = SiswaModel::all();
-        return view('form.index', compact("data"));
+        return view('form.index', compact("data", "jurusan", "kelasSiswa"));
     }
 
     /**

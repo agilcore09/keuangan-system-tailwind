@@ -1,6 +1,8 @@
 $("#tombol-add").on("click", function (event) {
     event.preventDefault();
-    $('.display-table').fadeOut(300, () => {
-        $(this).remove()
-    });
+    $('.display-add').fadeIn("slow");
 });
+
+$('#button-cancel').on('click', function () {
+    $('.display-add').fadeOut("slow");
+})
