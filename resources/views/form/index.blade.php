@@ -97,7 +97,8 @@
                                                 <div class="flex items-center text-sm">
                                                     <div class="relative w-8 h-8 mr-3 rounded-full md:block">
                                                         <img class="object-cover w-full h-full rounded-full"
-                                                            src="{{ asset('azizi.jpg') }}" alt="" loading="lazy" />
+                                                            src="{{ asset('foto_siswa/' . $item->gambar) }}" alt=""
+                                                            loading="lazy" />
                                                         <div class="absolute inset-0 rounded-full shadow-inner"
                                                             aria-hidden="true"></div>
                                                     </div>
@@ -124,39 +125,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                    @foreach ($data as $item)
-                                        <tr class="text-gray-700">
-                                            <td class="px-4 py-3 border">
-                                                <div class="flex items-center text-sm">
-                                                    <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                                                        <img class="object-cover w-full h-full rounded-full"
-                                                            src="{{ asset('azizi.jpg') }}" alt="" loading="lazy" />
-                                                        <div class="absolute inset-0 rounded-full shadow-inner"
-                                                            aria-hidden="true"></div>
-                                                    </div>
-                                                    <div>
-                                                        <p class="font-semibold text-black">{{ $item->nama_siswa }}</p>
-                                                        <p class="text-xs text-gray-600">{{ $item->nis }}</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3 text-ms font-semibold border">{{ $item->kelas }}</td>
-                                            <td class="px-4 py-3 text-xs border">
 
-
-                                                <span
-                                                    class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm">
-                                                    {{ $item->Category->nama_jurusan }} </span>
-                                            </td>
-                                            <td class="px-4 py-3 text-sm border">{{ $item->Type->type_name }}</td>
-                                            <td class="px-4 py-3 text-sm border">
-                                                <div class="flex justify-center">
-                                                    <i class="fa-solid fa-trash mr-1 text-red-500 hover:text-red-900"></i>
-                                                    <i class="fa-solid fa-pen ml-1 text-green-500 hover:text-green-900"></i>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
 
                                 </tbody>
                             </table>
@@ -167,10 +136,14 @@
         </div>
     </div>
     {{-- end dashboard table view --}}
-
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div>{{ $error }}</div>
+        @endforeach
+    @endif
     {{-- add data modal --}}
     <div class="container display-add bg-white shadow-xl p-9 absolute top-10 w-3/4 hidden">
-        <form method="POST" action="{{ url('data-siswa') }}">
+        <form method="POST" action="{{ url('data-siswa') }}" enctype="multipart/form-data">
             @csrf
             @method('POST')
             <div class="space-y-12">
@@ -181,10 +154,10 @@
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
 
                         <div class="col-span-full">
-                            <label for="foto" class="block text-sm font-medium leading-6 text-gray-900">Foto
+                            <label for="gambar" class="block text-sm font-medium leading-6 text-gray-900">Foto
                                 Siswa </label>
                             <div class="mt-1">
-                                <input type="file" name="foto" id="foto" autocomplete="off"
+                                <input type="file" name="gambar" id="gambar" autocomplete="off"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>

@@ -6,7 +6,7 @@ use App\Models\CategoryModel;
 use App\Models\SiswaModel;
 use Illuminate\Http\Request;
 use App\Models\TypeModel;
-use Illuminate\Validation\Rules\File;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SiswaController extends Controller
 {
@@ -45,8 +45,8 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
 
-        $validate = $request->validate([
-            // 'gambar' => ['required', File::image()->min(0)->max(2 * 512)->dimensions(Rule::dimensions()->maxWidth(1000)->maxHeight(500))],
+        $this->validate($request, [
+            'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'nama_siswa' => 'required|max:50',
             'kelas' => 'required|max:20',
             'nis' => 'required|unique:siswa|max:10',
@@ -54,8 +54,14 @@ class SiswaController extends Controller
             'type_id' => 'required'
         ]);
 
+        $gambar = $request->file('gambar');
+        $nama_file = time() . "_" . $gambar->getClientOriginalName();
+        $tujuan = 'foto_siswa';
+        $gambar->move($tujuan, $nama_file);
+
+
         $input = new SiswaModel;
-        $input->gambar = $request->gambar;
+        $input->gambar = $nama_file;
         $input->nama_siswa = $request->nama_siswa;
         $input->kelas = $request->kelas;
         $input->nis = $request->nis;
@@ -63,7 +69,8 @@ class SiswaController extends Controller
         $input->type_id = $request->type_id;
         $input->save();
 
-        return redirect()->to('data-siswa');
+        Alert::success('Sukses', 'Berhasil Menambah Data');
+        return redirect()->back();
     }
 
     /**
