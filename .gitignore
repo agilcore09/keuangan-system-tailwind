@@ -4,6 +4,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/public/foto_siswa
 .env
 .env.backup
 .env.production
