@@ -6,6 +6,8 @@ use App\Models\CategoryModel;
 use App\Models\SiswaModel;
 use Illuminate\Http\Request;
 use App\Models\TypeModel;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Validated;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SiswaController extends Controller
@@ -44,9 +46,8 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->validate($request, [
-            'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+        $validator = Validator::make($request->all(), [
+            // 'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'nama_siswa' => 'required|max:50',
             'kelas' => 'required|max:20',
             'nis' => 'required|unique:siswa|max:10',
@@ -54,23 +55,32 @@ class SiswaController extends Controller
             'type_id' => 'required'
         ]);
 
+        // check jika validasi gagal
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        // create Siswa
+
         $gambar = $request->file('gambar');
         $nama_file = time() . "_" . $gambar->getClientOriginalName();
         $tujuan = 'foto_siswa';
         $gambar->move($tujuan, $nama_file);
 
+        $siswa = SiswaModel::create([
+            "nama_siswa" => $request->nama_siswa,
+            "gambar" => $nama_file,
+            "kelas" => $request->kelas,
+            "nis" => $request->nis,
+            "category_id" => $request->category_id,
+            "type_id" => $request->type_id
+        ]);
 
-        $input = new SiswaModel;
-        $input->gambar = $nama_file;
-        $input->nama_siswa = $request->nama_siswa;
-        $input->kelas = $request->kelas;
-        $input->nis = $request->nis;
-        $input->category_id = $request->category_id;
-        $input->type_id = $request->type_id;
-        $input->save();
-
-        Alert::success('Sukses', 'Berhasil Menambah Data');
-        return redirect()->back();
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Berhasil Di Simpan',
+            'data' => $siswa
+        ]);
     }
 
     /**
