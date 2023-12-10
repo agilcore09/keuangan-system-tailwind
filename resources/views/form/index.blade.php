@@ -80,7 +80,7 @@
                     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
                         <div class="w-full overflow-x-auto overflow-y-scroll h-80">
                             {{-- loading section --}}
-                            <div class="h-screen bg-white loading">
+                            <div class="h-full bg-white loading">
                                 <div class="flex justify-center items-center h-full">
                                     <img class="h-16 w-16"
                                         src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
