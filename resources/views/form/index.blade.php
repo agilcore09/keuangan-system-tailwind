@@ -79,7 +79,16 @@
                 <section class="container mx-auto p-6 font-mono">
                     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
                         <div class="w-full overflow-x-auto overflow-y-scroll h-80">
-                            <table class="w-full">
+                            {{-- loading section --}}
+                            <div class="h-screen bg-white loading">
+                                <div class="flex justify-center items-center h-full">
+                                    <img class="h-16 w-16"
+                                        src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
+                                        alt="">
+                                </div>
+                            </div>
+                            {{-- end loading section --}}
+                            <table class="w-full table">
                                 <thead>
                                     <tr
                                         class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
@@ -90,7 +99,8 @@
                                         <th class="px-4 py-3">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white">
+
+                                <tbody class="bg-white" id="tbody">
                                     @foreach ($data as $item)
                                         <tr class="text-gray-700">
                                             <td class="px-4 py-3 border">
@@ -125,8 +135,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-
-
                                 </tbody>
                             </table>
                         </div>

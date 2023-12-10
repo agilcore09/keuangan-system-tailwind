@@ -1,5 +1,17 @@
+// window loading screen
+$(window).on("load", function () {
+    $('.table').hide();
+    setInterval(() => {
+        $('.loading').hide();
+        $('.table').fadeIn("slow");
+    }, 1000);
+});
 
 
+
+
+
+// create data action panel
 $("#tombol-add").on("click", function (event) {
     event.preventDefault();
     $('.display-add').fadeIn("slow");
@@ -11,34 +23,19 @@ $('#button-cancel').on('click', function () {
 
 $("#form-add").on("submit", function (e) {
     e.preventDefault();
-    let gambar = $('#gambar').val();
-    let namaSiswa = $('#nama_siswa').val();
-    let nis = $('#nis').val();
-    let kelas = $('#kelas').val();
-    let categoryId = $('#category_id').val();
-    let typeId = $('#type_id').val();
-    let token = $("meta[name='csrf-token']").attr("content");
-    console.log(gambar)
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        // data: {
-        //     "gambar": gambar,
-        //     "nama_siswa": namaSiswa,
-        //     "nis": nis,
-        //     "kelas": kelas,
-        //     "category_id": categoryId,
-        //     "type_id": typeId,
-        //     "_token": token
-        // },
         data: new FormData(this),
         url: '/data-siswa',
         type: 'POST',
         contentType: false,
         processData: false,
         success: function (response) {
-            console.log("success")
+            $('#form-add')[0].reset();
+            $('.display-add').fadeOut("slow");
+            location.reload();
         }, error: function (data) {
             var errors = data.responseJSON;
             console.log(errors);
