@@ -7,8 +7,8 @@ use App\Models\SiswaModel;
 use Illuminate\Http\Request;
 use App\Models\TypeModel;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Auth\Events\Validated;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
+
 
 class SiswaController extends Controller
 {
@@ -47,7 +47,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // 'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'nama_siswa' => 'required|max:50',
             'kelas' => 'required|max:20',
             'nis' => 'required|unique:siswa|max:10',
@@ -89,9 +89,14 @@ class SiswaController extends Controller
      * @param  \App\Models\SiswaModel  $siswaModel
      * @return \Illuminate\Http\Response
      */
-    public function show(SiswaModel $siswaModel)
+    public function show(SiswaModel $siswaModel, $nis)
     {
-        //
+        $data = DB::table('siswa')->where('nis', '=', $nis)->get();
+        return response()->json([
+            'success' => true,
+            'message' => "berhasil GET DATA",
+            'data' => $data
+        ]);
     }
 
     /**
