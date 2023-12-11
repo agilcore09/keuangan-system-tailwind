@@ -7,6 +7,11 @@ $(window).on("load", function () {
     }, 1000);
 });
 
+// close alert button
+$(".closealertbutton").click(function (e) {
+    pid = $(this).parent().parent().hide(500)
+})
+
 // create data action panel
 $("#tombol-add").on("click", function (event) {
     event.preventDefault();
@@ -42,11 +47,23 @@ $("#form-add").on("submit", function (e) {
                 title: 'Sukses',
                 text: 'Berhasil Menambah Data',
                 icon: 'success',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Confirm'
             })
         }, error: function (data) {
-            var errors = data.responseJSON;
-            console.log(errors);
+
+            let errors = data.responseJSON;
+            let errorGambar = errors.gambar[0];
+            if (errorGambar) {
+                $('.gambar').addClass('border-red-500')
+            }
+            console.log(errors.gambar[0])
+
+            Swal.fire({
+                title: 'Gagal',
+                text: "Ada Inputan Error",
+                icon: 'error',
+                confirmButtonText: 'Confirm'
+            })
         }
     })
 })

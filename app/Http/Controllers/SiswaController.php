@@ -134,7 +134,6 @@ class SiswaController extends Controller
             'category_id' => $request->category_id,
             'type_id' => $request->type_id
         ]);
-
         return redirect()->to('/data-siswa');
     }
 
