@@ -6,6 +6,7 @@ use App\Models\CategoryModel;
 use App\Models\SiswaModel;
 use Illuminate\Http\Request;
 use App\Models\TypeModel;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -91,12 +92,10 @@ class SiswaController extends Controller
      */
     public function show(SiswaModel $siswaModel, $nis)
     {
-        $data = DB::table('siswa')->where('nis', '=', $nis)->get();
-        return response()->json([
-            'success' => true,
-            'message' => "berhasil GET DATA",
-            'data' => $data
-        ]);
+        $data = $siswaModel->where('nis', '=', $nis)->first();
+        $jurusan = CategoryModel::all();
+        $kelasSiswa = TypeModel::all();
+        return view("form.update", compact("data", "jurusan", "kelasSiswa"));
     }
 
     /**
@@ -105,9 +104,8 @@ class SiswaController extends Controller
      * @param  \App\Models\SiswaModel  $siswaModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(SiswaModel $siswaModel)
+    public function edit(SiswaModel $siswaModel, Request $request, $nis)
     {
-        //
     }
 
     /**
@@ -117,9 +115,27 @@ class SiswaController extends Controller
      * @param  \App\Models\SiswaModel  $siswaModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SiswaModel $siswaModel)
+    public function update(Request $request, SiswaModel $siswaModel, $nis)
     {
-        //
+        // update data siswa
+
+        $validated = $request->validate([
+            'nama_siswa' => 'required|max:50',
+            'kelas' => 'required|max:20',
+            'nis' => 'required',
+            'category_id' => 'required',
+            'type_id' => 'required'
+        ]);
+
+        $data = $siswaModel::where('nis', $nis)->update([
+            'nama_siswa' => $request->nama_siswa,
+            'kelas' => $request->kelas,
+            'nis' => $request->nis,
+            'category_id' => $request->category_id,
+            'type_id' => $request->type_id
+        ]);
+
+        return redirect()->to('/data-siswa');
     }
 
     /**

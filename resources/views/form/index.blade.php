@@ -129,7 +129,7 @@
                                                 <div class="flex justify-center">
                                                     <a href="javascript:void(0)" data-nis="{{ $item->nis }}"><i
                                                             class="fa-solid fa-trash mr-1 text-red-500 hover:text-red-900"></i></a>
-                                                    <a href="javascript:void(0)" data-nis="{{ $item->nis }}"
+                                                    <a href="{{ url('/data-siswa' . '/' . $item->nis) }}"
                                                         class="btn-update"><i
                                                             class="fa-solid
                                                         fa-pen ml-1 text-green-500 hover:text-green-900"></i></a>

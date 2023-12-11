@@ -23,7 +23,7 @@ $('#update-cancel').on('click', function () {
 })
 
 
-
+// add page
 $("#form-add").on("submit", function (e) {
     e.preventDefault();
     $.ajax({
@@ -51,18 +51,3 @@ $("#form-add").on("submit", function (e) {
     })
 })
 
-// update section
-$('.btn-update').on("click", () => {
-    let nis = $(".btn-update").data("nis");
-    console.log(nis)
-    $.ajax({
-        url: `data-siswa/${nis}`,
-        type: "GET",
-        cache: false,
-        success: (response) => {
-            console.log(response)
-            $('#update_kelas').val("1211223");
-            $('.display-update').fadeIn("slow");
-        }
-    })
-});
