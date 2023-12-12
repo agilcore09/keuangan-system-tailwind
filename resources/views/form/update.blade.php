@@ -1,7 +1,7 @@
 @extends('core.index')
 @section('content')
     <div class="bg-gray-50/50 w-full py-5 container p-10">
-        <form method="POST">
+        <form method="POST" action="{{ url('/data-siswa' . '/' . $data->nis) }}">
             @csrf
             @method('PUT')
             <div class="space-y-12">

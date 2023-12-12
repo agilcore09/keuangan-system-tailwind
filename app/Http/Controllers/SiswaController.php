@@ -92,10 +92,6 @@ class SiswaController extends Controller
      */
     public function show(SiswaModel $siswaModel, $nis)
     {
-        $data = $siswaModel->where('nis', '=', $nis)->first();
-        $jurusan = CategoryModel::all();
-        $kelasSiswa = TypeModel::all();
-        return view("form.update", compact("data", "jurusan", "kelasSiswa"));
     }
 
     /**
@@ -106,6 +102,10 @@ class SiswaController extends Controller
      */
     public function edit(SiswaModel $siswaModel, Request $request, $nis)
     {
+        $data = $siswaModel->where('nis', '=', $nis)->first();
+        $jurusan = CategoryModel::all();
+        $kelasSiswa = TypeModel::all();
+        return view("form.update", compact("data", "jurusan", "kelasSiswa"));
     }
 
     /**
@@ -143,8 +143,9 @@ class SiswaController extends Controller
      * @param  \App\Models\SiswaModel  $siswaModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SiswaModel $siswaModel)
+    public function destroy(SiswaModel $siswaModel, $nis)
     {
-        //
+        $data = $siswaModel::where('nis', '=', $nis)->delete();
+        return redirect()->to('/data-siswa');
     }
 }

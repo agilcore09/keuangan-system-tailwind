@@ -127,9 +127,14 @@
                                             <td class="px-4 py-3 text-sm border">{{ $item->Type->type_name }}</td>
                                             <td class="px-4 py-3 text-sm border">
                                                 <div class="flex justify-center">
-                                                    <a href="javascript:void(0)" data-nis="{{ $item->nis }}"><i
-                                                            class="fa-solid fa-trash mr-1 text-red-500 hover:text-red-900"></i></a>
-                                                    <a href="{{ url('/data-siswa' . '/' . $item->nis) }}"
+                                                    <form action="{{ url('/data-siswa' . '/' . $item->nis) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"><i
+                                                                class="fa-solid fa-trash mr-1 text-red-500 hover:text-red-900"></i></button>
+                                                    </form>
+                                                    <a href="{{ url('/data-siswa' . '/' . $item->nis . '/' . 'edit') }}"
                                                         class="btn-update"><i
                                                             class="fa-solid
                                                         fa-pen ml-1 text-green-500 hover:text-green-900"></i></a>
@@ -156,6 +161,8 @@
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Tambah Data data-siswa</h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">Tambahkan data siswa jika sudah fix menjadi siswa</p>
 
+                    {{-- alert section --}}
+
                     <div class="container error mt-5" id="alertbox">
                         <div class="container bg-red-500 flex items-center text-white text-sm font-bold px-4 py-3 relative"
                             role="alert">
@@ -175,6 +182,8 @@
                             </span>
                         </div>
                     </div>
+
+                    {{-- end alert section --}}
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
                         <div class="col-span-full">
