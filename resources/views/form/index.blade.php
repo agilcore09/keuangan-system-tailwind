@@ -1,4 +1,5 @@
 @extends('core.index')
+@include('core.script')
 @section('content')
     @if (request()->session()->has('success'))
         <div class="container error error-click mt-5" id="alertbox">
@@ -116,6 +117,7 @@
                                         class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                                         <th class="px-4 py-3">Nama</th>
                                         <th class="px-4 py-3">Kelas</th>
+                                        <th class="px-4 py-3">NISN</th>
                                         <th class="px-4 py-3">Jurusan</th>
                                         <th class="px-4 py-3">Kategory</th>
                                         <th class="px-4 py-3">Action</th>
@@ -141,6 +143,7 @@
                                                 </div>
                                             </td>
                                             <td class="px-4 py-3 text-ms font-semibold border">{{ $item->kelas }}</td>
+                                            <td class="px-4 py-3 text-ms font-semibold border">{{ $item->nisn }}</td>
                                             <td class="px-4 py-3 text-xs border">
                                                 <span
                                                     class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm">
@@ -214,6 +217,13 @@
                             </div>
                         </div>
                         <div class="col-span-full">
+                            <label for="nis" class="block text-sm font-medium leading-6 text-gray-900">NISN </label>
+                            <div class="mt-1">
+                                <input type="number" name="nisn" id="nisn" autocomplete="off"
+                                    class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div class="col-span-full">
                             <label for="kelas" class="block text-sm font-medium leading-6 text-gray-900">Kelas </label>
                             <div class="mt-1">
                                 <input type="text" name="kelas" id="kelas" autocomplete="off"
@@ -263,4 +273,3 @@
     </div>
     {{-- end add data --}}
 @endsection
-@include('core.script')

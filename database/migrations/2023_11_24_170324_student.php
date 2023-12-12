@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('gambar')->nullable();
             $table->string('nama_siswa');
             $table->integer('nis')->unique();
+            $table->integer('nisn')->unique();
             $table->string('kelas');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('type_id');

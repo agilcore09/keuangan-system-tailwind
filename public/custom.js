@@ -36,6 +36,7 @@ $("#form-add").on("submit", function (e) {
         contentType: false,
         processData: false,
         success: function (response) {
+
             $('#form-add')[0].reset();
             $('.display-add').fadeOut("slow");
             Swal.fire({

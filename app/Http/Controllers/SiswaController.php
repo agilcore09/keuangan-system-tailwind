@@ -21,7 +21,7 @@ class SiswaController extends Controller
     {
         $jurusan = CategoryModel::all();
         $kelasSiswa = TypeModel::all();
-        $data = SiswaModel::all();
+        $data = SiswaModel::with(['Category', 'Type'])->get();
 
         if ($request->all() != null) {
             $data = DB::table('siswa')->where('nama_siswa', 'like', '%' . $request->search . '%')->get();
@@ -32,6 +32,7 @@ class SiswaController extends Controller
             ]);
         }
         return view('form.index', compact("data", "jurusan", "kelasSiswa"));
+        // return view('form.index', compact("data", "jurusan", "kelasSiswa"));
     }
 
     /**
@@ -59,7 +60,8 @@ class SiswaController extends Controller
             'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'nama_siswa' => 'required|max:50',
             'kelas' => 'required|max:20',
-            'nis' => 'required|unique:siswa|max:10',
+            'nis' => 'required|unique:siswa|max:12',
+            'nisn' => 'required|unique:siswa|max:12',
             'category_id' => 'required',
             'type_id' => 'required'
         ]);
@@ -81,6 +83,7 @@ class SiswaController extends Controller
             "gambar" => $nama_file,
             "kelas" => $request->kelas,
             "nis" => $request->nis,
+            "nisn" => $request->nisn,
             "category_id" => $request->category_id,
             "type_id" => $request->type_id
         ]);
@@ -131,6 +134,7 @@ class SiswaController extends Controller
             'nama_siswa' => 'required|max:50',
             'kelas' => 'required|max:20',
             'nis' => 'required',
+            'nisn' => 'required',
             'category_id' => 'required',
             'type_id' => 'required'
         ]);
@@ -139,11 +143,10 @@ class SiswaController extends Controller
             'nama_siswa' => $request->nama_siswa,
             'kelas' => $request->kelas,
             'nis' => $request->nis,
+            'nisn' => $request->nisn,
             'category_id' => $request->category_id,
             'type_id' => $request->type_id
         ]);
-
-
         return redirect()->to('/data-siswa');
     }
 

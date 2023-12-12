@@ -23,6 +23,7 @@
     <script src="jquery.js"></script>
     <script src="custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('jquery.js') }}"></script>
     <script>
         // pencarian
         $('#pencarian').on('input', () => {
@@ -39,10 +40,12 @@
                 success: function(response) {
                     const tbody = $('#tbody');
                     const data = response.data;
-                    if (search != "") {
+                    console.log(response)
+                    tbody.empty()
+                    if (search != "" || search != null || search != empty) {
                         for (const datas of data) {
                             console.log(datas)
-                            tbody.empty()
+
                             tbody.append(`
                                             <tr class="text-gray-700">
                                                                         <td class="px-4 py-3 border">
@@ -56,27 +59,28 @@
                                                                                 </div>
                                                                                 <div>
                                                                                     <p class="font-semibold text-black">${datas.nama_siswa}</p>
-                                                                                    <p class="text-xs text-gray-600">{{ $item->nis }}</p>
+                                                                                    <p class="text-xs text-gray-600">${datas.nis}</p>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
-                                                                        <td class="px-4 py-3 text-ms font-semibold border">{{ $item->kelas }}</td>
+                                                                        <td class="px-4 py-3 text-ms font-semibold border">${datas.kelas}</td>
+                                                                        <td class="px-4 py-3 text-ms font-semibold border">${datas.nisn}</td>
                                                                         <td class="px-4 py-3 text-xs border">
                                                                             <span
                                                                                 class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm">
-                                                                                {{ $item->Category->nama_jurusan }} </span>
+                                                                                nama_jurusan </span>
                                                                         </td>
-                                                                        <td class="px-4 py-3 text-sm border">{{ $item->Type->type_name }}</td>
+                                                                        <td class="px-4 py-3 text-sm border">kelas siswa</td>
                                                                         <td class="px-4 py-3 text-sm border">
                                                                             <div class="flex justify-center">
-                                                                                <form action="{{ url('/data-siswa' . '/' . $item->nis) }}"
+                                                                                <form action="/data-siswa/${datas.nis}"
                                                                                     method="post">
                                                                                     @csrf
                                                                                     @method('DELETE')
                                                                                     <button type="submit"><i
                                                                                             class="fa-solid fa-trash mr-1 text-red-500 hover:text-red-900"></i></button>
                                                                                 </form>
-                                                                                <a href="{{ url('/data-siswa' . '/' . $item->nis . '/' . 'edit') }}"
+                                                                                <a href="/data-siswa${datas.nis}/edit"
                                                                                     class="btn-update"><i
                                                                                         class="fa-solid
                                                                                     fa-pen ml-1 text-green-500 hover:text-green-900"></i></a>
@@ -104,27 +108,27 @@
                                                                                 </div>
                                                                                 <div>
                                                                                     <p class="font-semibold text-black">${datas.nama_siswa}</p>
-                                                                                    <p class="text-xs text-gray-600">{{ $item->nis }}</p>
+                                                                                    <p class="text-xs text-gray-600">${datas.nis}</p>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
-                                                                        <td class="px-4 py-3 text-ms font-semibold border">{{ $item->kelas }}</td>
+                                                                        <td class="px-4 py-3 text-ms font-semibold border">${datas.kelas}</td>
                                                                         <td class="px-4 py-3 text-xs border">
                                                                             <span
                                                                                 class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm">
-                                                                                {{ $item->Category->nama_jurusan }} </span>
+                                                                                nama_jurusan </span>
                                                                         </td>
-                                                                        <td class="px-4 py-3 text-sm border">{{ $item->Type->type_name }}</td>
+                                                                        <td class="px-4 py-3 text-sm border">kelas siswa</td>
                                                                         <td class="px-4 py-3 text-sm border">
                                                                             <div class="flex justify-center">
-                                                                                <form action="{{ url('/data-siswa' . '/' . $item->nis) }}"
+                                                                                <form action="/data-siswa/'${datas . nis}"
                                                                                     method="post">
                                                                                     @csrf
                                                                                     @method('DELETE')
                                                                                     <button type="submit"><i
                                                                                             class="fa-solid fa-trash mr-1 text-red-500 hover:text-red-900"></i></button>
                                                                                 </form>
-                                                                                <a href="{{ url('/data-siswa' . '/' . $item->nis . '/' . 'edit') }}"
+                                                                                <a href="/data-siswa/${datas . nis}/edit"
                                                                                     class="btn-update"><i
                                                                                         class="fa-solid
                                                                                     fa-pen ml-1 text-green-500 hover:text-green-900"></i></a>
