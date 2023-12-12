@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiswaController;
 use App\Models\Siswamodel;
@@ -22,6 +23,8 @@ Route::get('/home', function () {
 })->middleware(['auth', 'verified']);
 
 Route::resource('/data-siswa', SiswaController::class);
+Route::resource('/pembayaran', PembayaranController::class);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

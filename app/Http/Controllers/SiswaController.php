@@ -24,7 +24,12 @@ class SiswaController extends Controller
         $data = SiswaModel::with(['Category', 'Type'])->get();
 
         if ($request->all() != null) {
-            $data = DB::table('siswa')->where('nama_siswa', 'like', '%' . $request->search . '%')->get();
+            $data = DB::table('siswa')
+                ->join('category', 'siswa.category_id', 'category.id')
+                ->join('type', 'siswa.type_id', 'type.id')
+                ->where('nama_siswa', 'like', '%' . $request->search . '%')
+                ->get();
+
             return response()->json([
                 "data" => $data,
                 "message" => "berhasil tangkap",

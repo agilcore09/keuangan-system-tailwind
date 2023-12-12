@@ -68,9 +68,9 @@
                                                                         <td class="px-4 py-3 text-xs border">
                                                                             <span
                                                                                 class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm">
-                                                                                nama_jurusan </span>
+                                                                                ${datas.nama_jurusan}</span>
                                                                         </td>
-                                                                        <td class="px-4 py-3 text-sm border">kelas siswa</td>
+                                                                        <td class="px-4 py-3 text-sm border">${datas.type_name}</td>
                                                                         <td class="px-4 py-3 text-sm border">
                                                                             <div class="flex justify-center">
                                                                                 <form action="/data-siswa/${datas.nis}"
@@ -80,7 +80,7 @@
                                                                                     <button type="submit"><i
                                                                                             class="fa-solid fa-trash mr-1 text-red-500 hover:text-red-900"></i></button>
                                                                                 </form>
-                                                                                <a href="/data-siswa${datas.nis}/edit"
+                                                                                <a href="/data-siswa/${datas.nis}/edit"
                                                                                     class="btn-update"><i
                                                                                         class="fa-solid
                                                                                     fa-pen ml-1 text-green-500 hover:text-green-900"></i></a>
