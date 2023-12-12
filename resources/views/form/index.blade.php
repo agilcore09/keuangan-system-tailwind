@@ -1,5 +1,26 @@
 @extends('core.index')
 @section('content')
+    @if (request()->session()->has('success'))
+        <div class="container error error-click mt-5" id="alertbox">
+            <div class="container bg-red-500 flex items-center text-white text-sm font-bold px-4 py-3 relative"
+                role="alert">
+                <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path
+                        d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z" />
+                </svg>
+                <p>Berhasil Menghapus Data</p>
+
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton">
+                    <svg class="fill-current h-6 w-6 text-white" role="button" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20">
+                        <title>Close</title>
+                        <path
+                            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+    @endif
     <div class="container">
         <div class="mt-14 px-5">
             <nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
@@ -55,7 +76,7 @@
                     <div class="pt-2 relative mx-auto text-gray-900">
                         <input
                             class="border-2 border-gray-900 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                            type="search" name="search" placeholder="Search" autocomplete="off">
+                            type="search" name="search" placeholder="Search" autocomplete="off" id="pencarian">
                         <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
                             <svg class="text-gray-900 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -68,6 +89,7 @@
                         </button>
                     </div>
                 </div>
+
             </div>
             {{-- end section --}}
         </div>
@@ -134,7 +156,7 @@
                                                         <button type="submit"><i
                                                                 class="fa-solid fa-trash mr-1 text-red-500 hover:text-red-900"></i></button>
                                                     </form>
-                                                    <a href="{{ url('/data-siswa' . '/' . $item->nis . '/' . 'edit') }}"
+                                                    <a href="{{ url('/data-siswa' . '/' . $item->nis) . '/edit' }}"
                                                         class="btn-update"><i
                                                             class="fa-solid
                                                         fa-pen ml-1 text-green-500 hover:text-green-900"></i></a>
@@ -162,36 +184,18 @@
                     <p class="mt-1 text-sm leading-6 text-gray-600">Tambahkan data siswa jika sudah fix menjadi siswa</p>
 
                     {{-- alert section --}}
+                    <div class="error-page">
 
-                    <div class="container error mt-5" id="alertbox">
-                        <div class="container bg-red-500 flex items-center text-white text-sm font-bold px-4 py-3 relative"
-                            role="alert">
-                            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path
-                                    d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z" />
-                            </svg>
-                            <p>Something happened that you should know about.</p>
-
-                            <span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton">
-                                <svg class="fill-current h-6 w-6 text-white" role="button"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <title>Close</title>
-                                    <path
-                                        d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                                </svg>
-                            </span>
-                        </div>
                     </div>
 
                     {{-- end alert section --}}
-
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
                         <div class="col-span-full">
                             <label for="gambar" class="gambar block text-sm font-medium leading-6 text-gray-900">Foto
                                 Siswa </label>
                             <div class="mt-1">
                                 <input type="file" name="gambar" id="gambar" autocomplete="off"
-                                    class="block w-full border-red-500   rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    class="block w-full rounded-md border-0  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div class="col-span-full">
@@ -258,90 +262,5 @@
         </form>
     </div>
     {{-- end add data --}}
-
-
-    {{-- update data modal --}}
-    <div class="container display-update bg-white shadow-xl p-9 absolute top-10 w-3/4 hidden">
-        <form method="POST" action="{{ url('data-siswa') }}" enctype="multipart/form-data" id="form-update">
-            @csrf
-            @method('POST')
-            <div class="space-y-12">
-                <div class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Tambah Data data-siswa</h2>
-                    <p class="mt-1 text-sm leading-6 text-gray-600">Tambahkan data siswa jika sudah fix menjadi siswa</p>
-
-                    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
-
-                        <div class="col-span-full">
-                            <label for="gambar" class="block text-sm font-medium leading-6 text-gray-900">Foto
-                                Siswa </label>
-                            <div class="mt-1">
-                                <input type="file" name="update_gambar" id="update_gambar" autocomplete="off"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div class="col-span-full">
-                            <label for="nama-siswa" class="block text-sm font-medium leading-6 text-gray-900">Nama
-                                Siswa </label>
-                            <div class="mt-1">
-                                <input type="text" name="update_nama_siswa" id="update_nama_siswa" autocomplete="off"
-                                    class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div class="col-span-full">
-                            <label for="nis" class="block text-sm font-medium leading-6 text-gray-900">NIS </label>
-                            <div class="mt-1">
-                                <input type="number" name="update_nis" id="update_nis" autocomplete="off"
-                                    class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div class="col-span-full">
-                            <label for="kelas" class="block text-sm font-medium leading-6 text-gray-900">Kelas </label>
-                            <div class="mt-1">
-                                <input type="text" name="update_kelas" id="update_kelas" autocomplete="off"
-                                    class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div class="col-span-2">
-                            <label for="jurusan"
-                                class="block text-sm font-medium leading-6 text-gray-900">Jurusan</label>
-                            <div class="mt-2">
-                                <select id="update_category_id" name="update_category_id" autocomplete="off"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option>Pilih Jurusan</option>
-                                    @foreach ($jurusan as $datas)
-                                        <option value="{{ $datas->id }}">{{ $datas->nama_jurusan }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-span-2">
-                            <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Kelas
-                                Siswa</label>
-                            <div class="mt-2">
-                                <select id="update_type_id" name="update_type_id" autocomplete="off"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option>Pilih Kelas Siswa</option>
-                                    @foreach ($kelasSiswa as $datas)
-                                        <option value="{{ $datas->id }}">{{ $datas->type_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="mt-6 flex items-center justify-end gap-x-6">
-                <button type="button" id="update-cancel"
-                    class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
-                <button type="submit"
-                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    id="btn-add">Submit
-                </button>
-            </div>
-        </form>
-    </div>
-    {{-- end add update --}}
 @endsection
+@include('core.script')

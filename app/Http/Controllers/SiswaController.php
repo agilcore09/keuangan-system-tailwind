@@ -6,10 +6,9 @@ use App\Models\CategoryModel;
 use App\Models\SiswaModel;
 use Illuminate\Http\Request;
 use App\Models\TypeModel;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
-
 
 class SiswaController extends Controller
 {
@@ -18,11 +17,20 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $jurusan = CategoryModel::all();
         $kelasSiswa = TypeModel::all();
         $data = SiswaModel::all();
+
+        if ($request->all() != null) {
+            $data = DB::table('siswa')->where('nama_siswa', 'like', '%' . $request->search . '%')->get();
+            return response()->json([
+                "data" => $data,
+                "message" => "berhasil tangkap",
+                "success" => true
+            ]);
+        }
         return view('form.index', compact("data", "jurusan", "kelasSiswa"));
     }
 
@@ -134,6 +142,8 @@ class SiswaController extends Controller
             'category_id' => $request->category_id,
             'type_id' => $request->type_id
         ]);
+
+
         return redirect()->to('/data-siswa');
     }
 
@@ -146,6 +156,7 @@ class SiswaController extends Controller
     public function destroy(SiswaModel $siswaModel, $nis)
     {
         $data = $siswaModel::where('nis', '=', $nis)->delete();
-        return redirect()->to('/data-siswa');
+        Alert::success('Sukses', 'Berhasil Menghapus Data');
+        return redirect()->to('/data-siswa')->with('success', 'Berhasil Menghapus Data');
     }
 }
