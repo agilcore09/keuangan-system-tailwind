@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PembayaranModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PembayaranController extends Controller
 {
@@ -12,8 +13,21 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->all() != null) {
+            $data = DB::table('siswa')
+                ->join('category', 'siswa.category_id', 'category.id')
+                ->join('type', 'siswa.type_id', 'type.id')
+                ->where('nama_siswa', 'like', '%' . $request->cari_siswa . '%')
+                ->get();
+
+            return response()->json([
+                "message" => "success get with searching data!",
+                "data" => $data,
+                "success" => true
+            ]);
+        }
         return view('pembayaran.index');
     }
 

@@ -172,65 +172,15 @@
                     {{-- end alert section --}}
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
                         <div class="col-span-2">
-                            <label for="nama" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Cari
+                            <label for="cari_siswa" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Cari
                                 Siswa
                             </label>
-                            <input type="text" id="cari-siswa" name="cari-siswa" autocomplete="off"
+                            <input type="text" id="cari_siswa" name="cari_siswa" autocomplete="off"
                                 class="rounded-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
                                 placeholder="Masukkan nama">
                             <div class="square hidden w-full rounded-lg h-1/2 bg-slate-50 px-1 py-1 overflow-auto">
-                                <div class="wrap w-full bg-white rounded my-1 hover:bg-slate-100">
-                                    <div class="container flex items-center p-1">
-                                        <div class="h-10 w-10 bg-slate-400 rounded-full"></div>
-                                        <div class="pl-2">
-                                            <label for="nama"
-                                                class="block text-sm font-medium leading-6 text-gray-900">Cari
-                                                Nama Siswa
-                                                <br>
-                                                <small class="text-gray-900">22006</small>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="wrap w-full bg-white rounded my-1 hover:bg-slate-100">
-                                    <div class="container flex items-center p-1">
-                                        <div class="h-10 w-10 bg-slate-400 rounded-full"></div>
-                                        <div class="pl-2">
-                                            <label for="nama"
-                                                class="block text-sm font-medium leading-6 text-gray-900">Cari
-                                                Nama Siswa
-                                                <br>
-                                                <small class="border-top">22006</small>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="wrap w-full bg-white rounded my-1 hover:bg-slate-100">
-                                    <div class="container flex items-center p-1">
-                                        <div class="h-10 w-10 bg-slate-400 rounded-full"></div>
-                                        <div class="pl-2">
-                                            <label for="nama"
-                                                class="block text-sm font-medium leading-6 text-gray-900">Cari
-                                                Nama Siswa
-                                                <br>
-                                                <small class="border-top">22006</small>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="wrap w-full bg-white rounded my-1 hover:bg-slate-100">
-                                    <div class="container flex items-center p-1">
-                                        <div class="h-10 w-10 bg-slate-400 rounded-full"></div>
-                                        <div class="pl-2">
-                                            <label for="nama"
-                                                class="block text-sm font-medium leading-6 text-gray-900">Cari
-                                                Nama Siswa
-                                                <br>
-                                                <small class="border-top">22006</small>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+
+
                             </div>
 
                         </div>
