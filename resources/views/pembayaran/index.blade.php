@@ -47,7 +47,7 @@
                 <div>
                     <button
                         class="middle none center flex items-center justify-center rounded-lg p-4 font-sans text-xs font-bold uppercase bg-gray-200 text-gray-900 transition-all hover:bg-gray-50/50 active:bg-gray-500 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-dark="true" id="tombol-add">
+                        data-ripple-dark="true" id="btn-add-pembayaran">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
@@ -156,4 +156,152 @@
         </div>
     </div>
     {{-- end dashboard table view --}}
+
+
+    <div class="container display-add bg-white shadow-xl p-9 absolute top-10 w-3/4">
+        <form method="POST" action="{{ url('data-siswa') }}" enctype="multipart/form-data" id="form-add">
+            @csrf
+            @method('POST')
+            <div class="space-y-12">
+                <div class="border-b border-gray-900/10 pb-12">
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">form Input Pembayaran</h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">Tambahkan Pembayaran Siswa</p>
+
+                    {{-- alert section --}}
+                    <div class="error-page">
+
+                    </div>
+
+                    {{-- end alert section --}}
+                    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
+                        <div class="col-span-full">
+                            <label for="pembangunan" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                                Pembangunan
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    Rp.
+                                </span>
+                                <input type="number" id="pembangunan" name="pembangunan"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
+                                    placeholder="Masukkan Biaya Pembangungan">
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="Tunggakan" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                                Tunggakan
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    Rp.
+                                </span>
+                                <input type="number" id="tunggakan" name="tunggakan"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
+                                    placeholder="Masukkan Biaya Tunggakan">
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="Tunggakan" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                                SPP
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    Rp.
+                                </span>
+                                <input type="number" id="tunggakan" name="tunggakan"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
+                                    placeholder="Masukkan Biaya SPP">
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="lab" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                                LAB
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    Rp.
+                                </span>
+                                <input type="number" id="lab" name="lab"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
+                                    placeholder="Masukkan Biaya LAB">
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="lab" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                                OSIS
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    Rp.
+                                </span>
+                                <input type="number" id="osis" name="osis"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
+                                    placeholder="Masukkan Biaya OSIS">
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="semester_ganjil"
+                                class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                                Semester Ganjil
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    Rp.
+                                </span>
+                                <input type="number" id="semester_ganjil" name="semester_ganjil"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
+                                    placeholder="Masukkan Biaya Semester Ganjil">
+                            </div>
+                        </div>
+
+
+                        <div class="col-span-2">
+                            <label for="jurusan"
+                                class="block text-sm font-medium leading-6 text-gray-900">Jurusan</label>
+                            <div class="mt-2">
+                                <select id="category_id" name="category_id" autocomplete="off"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                    <option>Pilih Jurusan</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-span-2">
+                            <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Kelas
+                                Siswa</label>
+                            <div class="mt-2">
+                                <select id="type_id" name="type_id" autocomplete="off"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                    <option>Pilih Kelas Siswa</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-6 flex items-center justify-end gap-x-6">
+                <button type="button" id="button-cancel"
+                    class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+                <button type="submit"
+                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    id="btn-add">Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    {{-- end add data --}}
 @endsection
