@@ -156,9 +156,7 @@
         </div>
     </div>
     {{-- end dashboard table view --}}
-
-
-    <div class="container display-add bg-white shadow-xl p-9 absolute top-10 w-3/4">
+    <div class="container display-add bg-white shadow-xl p-9 absolute top-10 w-3/4 hidden">
         <form method="POST" action="{{ url('data-siswa') }}" enctype="multipart/form-data" id="form-add">
             @csrf
             @method('POST')
@@ -171,9 +169,93 @@
                     <div class="error-page">
 
                     </div>
-
                     {{-- end alert section --}}
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
+                        <div class="col-span-2">
+                            <label for="nama" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Cari
+                                Siswa
+                            </label>
+                            <input type="text" id="cari-siswa" name="cari-siswa" autocomplete="off"
+                                class="rounded-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
+                                placeholder="Masukkan nama">
+                            <div class="square hidden w-full rounded-lg h-1/2 bg-slate-50 px-1 py-1 overflow-auto">
+                                <div class="wrap w-full bg-white rounded my-1 hover:bg-slate-100">
+                                    <div class="container flex items-center p-1">
+                                        <div class="h-10 w-10 bg-slate-400 rounded-full"></div>
+                                        <div class="pl-2">
+                                            <label for="nama"
+                                                class="block text-sm font-medium leading-6 text-gray-900">Cari
+                                                Nama Siswa
+                                                <br>
+                                                <small class="text-gray-900">22006</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrap w-full bg-white rounded my-1 hover:bg-slate-100">
+                                    <div class="container flex items-center p-1">
+                                        <div class="h-10 w-10 bg-slate-400 rounded-full"></div>
+                                        <div class="pl-2">
+                                            <label for="nama"
+                                                class="block text-sm font-medium leading-6 text-gray-900">Cari
+                                                Nama Siswa
+                                                <br>
+                                                <small class="border-top">22006</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrap w-full bg-white rounded my-1 hover:bg-slate-100">
+                                    <div class="container flex items-center p-1">
+                                        <div class="h-10 w-10 bg-slate-400 rounded-full"></div>
+                                        <div class="pl-2">
+                                            <label for="nama"
+                                                class="block text-sm font-medium leading-6 text-gray-900">Cari
+                                                Nama Siswa
+                                                <br>
+                                                <small class="border-top">22006</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrap w-full bg-white rounded my-1 hover:bg-slate-100">
+                                    <div class="container flex items-center p-1">
+                                        <div class="h-10 w-10 bg-slate-400 rounded-full"></div>
+                                        <div class="pl-2">
+                                            <label for="nama"
+                                                class="block text-sm font-medium leading-6 text-gray-900">Cari
+                                                Nama Siswa
+                                                <br>
+                                                <small class="border-top">22006</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-span-2">
+                            <label for="jurusan"
+                                class="block text-sm font-medium leading-6 text-gray-900">Jurusan</label>
+                            <div class="mt-3">
+                                <select id="category_id" name="category_id" autocomplete="off"
+                                    class="rounded-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5">
+                                    <option>Pilih Jurusan</option>
+                                    <option value="">askdjkad</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-span-2">
+                            <label for="jurusan"
+                                class="block text-sm font-medium leading-6 text-gray-900">Jurusan</label>
+                            <div class="mt-3">
+                                <select id="category_id" name="category_id" autocomplete="off"
+                                    class="rounded-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5">
+                                    <option>Pilih Jurusan</option>
+                                    <option value="">askdjkad</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-span-full">
                             <label for="pembangunan" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
                                 Pembangunan
@@ -266,28 +348,7 @@
                         </div>
 
 
-                        <div class="col-span-2">
-                            <label for="jurusan"
-                                class="block text-sm font-medium leading-6 text-gray-900">Jurusan</label>
-                            <div class="mt-2">
-                                <select id="category_id" name="category_id" autocomplete="off"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option>Pilih Jurusan</option>
 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-span-2">
-                            <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Kelas
-                                Siswa</label>
-                            <div class="mt-2">
-                                <select id="type_id" name="type_id" autocomplete="off"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option>Pilih Kelas Siswa</option>
-
-                                </select>
-                            </div>
-                        </div>
                     </div>
                 </div>
 

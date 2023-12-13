@@ -14,6 +14,18 @@ $("#tombol-add").on("click", function (event) {
     $('.display-add').fadeIn("slow");
 });
 
+// create pembayaran
+$("#btn-add-pembayaran").on("click", function (event) {
+    event.preventDefault();
+    $('.display-add').fadeIn("slow");
+});
+
+// jika cari siswa sedang focus
+$("#cari-siswa").on("input", function (event) {
+    event.preventDefault();
+    $('.square').fadeIn("slow");
+});
+
 $('#button-cancel').on('click', function () {
     $('.display-add').fadeOut("slow");
 })
