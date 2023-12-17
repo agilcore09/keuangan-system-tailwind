@@ -20,44 +20,6 @@ $("#btn-add-pembayaran").on("click", function (event) {
     $('.display-add').fadeIn("slow");
 });
 
-// jika cari siswa sedang focus
-$("#cari_siswa").on("input", function (event) {
-    event.preventDefault();
-    $('.square').fadeIn("slow");
-    let url = $('#cari_siswa').val();
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: `/pembayaran?cari_siswa=${url} `,
-        type: 'GET',
-        contentType: false,
-        processData: false,
-        success: (response) => {
-            console.log(response.data);
-            let data = response.data;
-            $('.square').empty()
-            for (const datas of data) {
-                if (url != "") {
-                    $('.square').append(`
-                         <div class="wrap w-full bg-white rounded my-1 hover:bg-slate-100">
-                                    <div class="container flex items-center p-1">
-                                        <div class="h-10 w-10 bg-slate-400 rounded-full"></div>
-                                        <div class="pl-2">
-                                            <label for="nama"
-                                                class="block text-sm font-medium leading-6 text-gray-900">${datas.nama_siswa}
-                                                <br>
-                                                <small class="text-gray-900">${datas.nis} | ${datas.nisn}</small>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                    `);
-                }
-            }
-        }
-    });
-});
 
 $('#button-cancel').on('click', function () {
     $('.display-add').fadeOut("slow");
@@ -123,4 +85,3 @@ $("#form-add").on("submit", function (e) {
 $('.closealertbutton').click(function () {
     $('#alertbox').hide(1000);
 })
-

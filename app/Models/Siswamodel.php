@@ -18,4 +18,9 @@ class Siswamodel extends Model
     {
         return $this->belongsTo(TypeModel::class, 'type_id', "id");
     }
+
+    public function Pembayaran()
+    {
+        return $this->hasMany(PembayaranModel::class, "siswa_id", "id");
+    }
 }

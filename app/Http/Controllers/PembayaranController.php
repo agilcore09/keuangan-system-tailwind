@@ -15,20 +15,12 @@ class PembayaranController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->all() != null) {
-            $data = DB::table('siswa')
-                ->join('category', 'siswa.category_id', 'category.id')
-                ->join('type', 'siswa.type_id', 'type.id')
-                ->where('nama_siswa', 'like', '%' . $request->cari_siswa . '%')
-                ->get();
+        $nama_siswa = DB::table('siswa')->get();
+        $nama_jurusan = DB::table('category')->get();
+        $kelas_siswa = DB::table('type')->get();
 
-            return response()->json([
-                "message" => "success get with searching data!",
-                "data" => $data,
-                "success" => true
-            ]);
-        }
-        return view('pembayaran.index');
+        $data = PembayaranModel::all();
+        return view('pembayaran.index', compact("nama_siswa", "nama_jurusan", "kelas_siswa", "data"));
     }
 
     /**
@@ -49,7 +41,35 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_siswa' => 'required',
+            'pembangunan' => 'required',
+            'tunggakan' => 'required',
+            'spp' => 'required',
+            'lab' => 'required',
+            'osis' => 'required',
+            'psg' => 'required',
+            'uas' => 'required',
+            'keterangan' => 'required',
+            'semester_ganjil' => 'required',
+            'semester_genap' => 'required',
+        ]);
+
+        PembayaranModel::create([
+            'siswa_id' => (int)$request->nama_siswa,
+            'pembangunan' => $request->pembangunan,
+            'tunggakan' => $request->tunggakan,
+            'spp' => $request->spp,
+            'lab' => $request->lab,
+            'osis' => $request->osis,
+            'psg' => $request->psg,
+            'uas' => $request->uas,
+            'keterangan' => $request->keterangan,
+            'semester_ganjil' => $request->semester_ganjil,
+            'semester_genap' => $request->semester_genap,
+        ]);
+
+        return redirect()->to('/pembayaran')->with('success', 'Berhasil Menambah Data Pembayaran');
     }
 
     /**

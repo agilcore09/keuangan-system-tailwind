@@ -92,6 +92,18 @@
             {{-- end section --}}
         </div>
 
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+            @endforeach
+        @endif
+
+        @if (session()->has('success'))
+            <script>
+                alert("berhasil menambah data pembayaran")
+            </script>
+        @endif
+
         {{-- table section --}}
         <div class="container">
             {{-- on card table section --}}
@@ -114,6 +126,7 @@
                                         class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                                         <th class="px-4 py-3">Nama Siswa</th>
                                         <th class="px-4 py-3">Kelas</th>
+                                        <th class="px-4 py-3">NIS</th>
                                         <th class="px-4 py-3">NISN</th>
                                         <th class="px-4 py-3">Jurusan</th>
                                         <th class="px-4 py-3">Pembangunan</th>
@@ -130,23 +143,30 @@
                                 </thead>
 
                                 <tbody class="bg-white" id="tbody">
-                                    <tr class="text-gray-700">
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmad
-                                            adasdjhasjdhjahsdaksjhdjkasd</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmafadasdadd</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmaadasddddddd</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahdasdasdasdmad</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmaasdasdasd</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmaasdasdasdd</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmdasdasad</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmasdasad</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmdasdad</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmdasdasdad</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmasdasdad</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmasdasdad</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmasdasdasad</td>
-                                        <td class="px-4 py-3 text-ms font-semibold border">Ahmdasdasdasdad</td>
-                                    </tr>
+                                    @foreach ($data as $item)
+                                        <tr class="text-gray-700">
+                                            <td class="px-4 py-3 text-ms border">
+                                                {{ $item->Siswa->nama_siswa }}
+                                            </td>
+                                            <td class="px-4 py-3 text-ms border">
+                                                {{ $item->Siswa->kelas }}
+                                            </td>
+                                            <td class="px-4 py-3 text-ms border">{{ $item->Siswa->nis }}</td>
+                                            <td class="px-4 py-3 text-ms border">{{ $item->Siswa->nisn }}</td>
+                                            <td class="px-4 py-3 text-ms border">
+                                                {{ $item->Siswa->Category->nama_jurusan }}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. {{ $item->pembangunan }}</td>
+                                            <td class="px-4 py-3 text-ms border">Ahmaasdasdasdd</td>
+                                            <td class="px-4 py-3 text-ms border">Ahmdasdasad</td>
+                                            <td class="px-4 py-3 text-ms border">Ahmasdasad</td>
+                                            <td class="px-4 py-3 text-ms border">Ahmdasdad</td>
+                                            <td class="px-4 py-3 text-ms border">Ahmdasdasdad</td>
+                                            <td class="px-4 py-3 text-ms border">Ahmasdasdad</td>
+                                            <td class="px-4 py-3 text-ms border">Ahmasdasdad</td>
+                                            <td class="px-4 py-3 text-ms border">Ahmasdasdasad</td>
+                                            <td class="px-4 py-3 text-ms border">Ahmdasdasdasdad</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -157,7 +177,7 @@
     </div>
     {{-- end dashboard table view --}}
     <div class="container display-add bg-white shadow-xl p-9 absolute top-10 w-3/4 hidden">
-        <form method="POST" action="{{ url('data-siswa') }}" enctype="multipart/form-data" id="form-add">
+        <form method="POST" action="{{ url('pembayaran') }}" id="form-update">
             @csrf
             @method('POST')
             <div class="space-y-12">
@@ -170,39 +190,27 @@
 
                     </div>
                     {{-- end alert section --}}
+
+
+
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
-                        <div class="col-span-2">
-                            <label for="cari_siswa" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Cari
-                                Siswa
-                            </label>
-                            <input type="text" id="cari_siswa" name="cari_siswa" autocomplete="off"
-                                class="rounded-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-                                placeholder="Masukkan nama">
-                            <div class="square hidden w-full rounded-lg h-1/2 bg-slate-50 px-1 py-1 overflow-auto">
-
-
-                            </div>
-
-                        </div>
-                        <div class="col-span-2">
-                            <label for="jurusan"
-                                class="block text-sm font-medium leading-6 text-gray-900">Jurusan</label>
+                        <div class="col-span-full">
+                            <label for="jurusan" class="block text-sm font-medium leading-6 text-gray-900">Pilih
+                                Siswa</label>
                             <div class="mt-3">
-                                <select id="category_id" name="category_id" autocomplete="off"
-                                    class="rounded-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5">
-                                    <option>Pilih Jurusan</option>
-                                    <option value="">askdjkad</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-span-2">
-                            <label for="jurusan"
-                                class="block text-sm font-medium leading-6 text-gray-900">Jurusan</label>
-                            <div class="mt-3">
-                                <select id="category_id" name="category_id" autocomplete="off"
-                                    class="rounded-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5">
-                                    <option>Pilih Jurusan</option>
-                                    <option value="">askdjkad</option>
+                                <select id="nama_siswa" name="nama_siswa" autocomplete="off"
+                                    class="rounded-lg nama_siswa  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5">
+                                    <option>Pilih Siswa</option>
+                                    @foreach ($nama_siswa as $item)
+                                        <option value="{{ $item->id }}">
+                                            {{ $item->nama_siswa }}
+                                            ||
+                                            {{ $item->nis }}
+                                            ||
+                                            {{ $item->nisn }}
+
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -212,42 +220,42 @@
                             </label>
                             <div class="flex">
                                 <span
-                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 @error('pembangunan') border-rose-500 @enderror rounded-l-md">
                                     Rp.
                                 </span>
                                 <input type="number" id="pembangunan" name="pembangunan"
-                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-                                    placeholder="Masukkan Biaya Pembangungan">
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm @error('pembangunan') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('pembangunan')) Form ini kosong!!! @else Masukkan Biaya Tunggakan @endif">
                             </div>
                         </div>
 
                         <div class="col-span-full">
-                            <label for="Tunggakan" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                            <label for="tunggakan" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
                                 Tunggakan
                             </label>
                             <div class="flex">
                                 <span
-                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 @error('tunggakan') border-rose-500 @enderror rounded-l-md">
                                     Rp.
                                 </span>
                                 <input type="number" id="tunggakan" name="tunggakan"
-                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-                                    placeholder="Masukkan Biaya Tunggakan">
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm @error('tunggakan') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('tunggakan')) Form ini kosong!!! @else Masukkan Biaya Tunggakan @endif">
                             </div>
                         </div>
 
                         <div class="col-span-full">
-                            <label for="Tunggakan" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                            <label for="spp" class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
                                 SPP
                             </label>
                             <div class="flex">
                                 <span
-                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0  @error('spp') border-rose-500 @enderror rounded-l-md">
                                     Rp.
                                 </span>
-                                <input type="number" id="tunggakan" name="tunggakan"
-                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-                                    placeholder="Masukkan Biaya SPP">
+                                <input type="number" id="spp" name="spp"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm  @error('spp') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('spp')) Form ini kosong!!! @else Masukkan Biaya SPP @endif">
                             </div>
                         </div>
 
@@ -257,12 +265,12 @@
                             </label>
                             <div class="flex">
                                 <span
-                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 @error('lab') border-rose-500 @enderror rounded-l-md">
                                     Rp.
                                 </span>
                                 <input type="number" id="lab" name="lab"
-                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-                                    placeholder="Masukkan Biaya LAB">
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm @error('lab') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('lab')) Form ini kosong!!! @else Masukkan Biaya LAB @endif">
                             </div>
                         </div>
 
@@ -272,12 +280,12 @@
                             </label>
                             <div class="flex">
                                 <span
-                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 @error('osis') border-rose-500 @enderror rounded-l-md">
                                     Rp.
                                 </span>
                                 <input type="number" id="osis" name="osis"
-                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-                                    placeholder="Masukkan Biaya OSIS">
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm @error('osis') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('osis')) Form ini kosong!!! @else Masukkan Biaya OSIS @endif ">
                             </div>
                         </div>
 
@@ -288,12 +296,75 @@
                             </label>
                             <div class="flex">
                                 <span
-                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 @error('semester_ganjil') border-rose-500 @enderror rounded-l-md">
                                     Rp.
                                 </span>
                                 <input type="number" id="semester_ganjil" name="semester_ganjil"
-                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-                                    placeholder="Masukkan Biaya Semester Ganjil">
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm @error('semester_ganjil') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('semester_ganjil')) Form ini kosong!!! @else Masukkan Biaya Semester Ganjil @endif ">
+                            </div>
+                        </div>
+                        <div class="col-span-full">
+                            <label for="semester_ganjil"
+                                class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                                Semester Genap
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 @error('semester_genap') border-rose-500 @enderror rounded-l-md">
+                                    Rp.
+                                </span>
+
+                                <input type="number" id="semester_genap" name="semester_genap"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm @error('semester_genap') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('semester_genap')) Form ini kosong!!! @else Masukkan Semester Genap @endif">
+                            </div>
+                        </div>
+                        <div class="col-span-full">
+                            <label for="semester_ganjil"
+                                class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                                UAS
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 @error('uas') border-rose-500 @enderror rounded-l-md">
+                                    Rp.
+                                </span>
+
+                                <input type="number" id="uas" name="uas"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm @error('uas') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('uas')) Form ini kosong!!! @else Masukkan Biaya Uas @endif">
+                            </div>
+                        </div>
+                        <div class="col-span-full">
+                            <label for="semester_ganjil"
+                                class="block text-sm font-medium leading-6 text-gray-900 mb-3">Biaya
+                                PSG
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 @error('psg') border-rose-500 @enderror rounded-l-md">
+                                    Rp.
+                                </span>
+
+                                <input type="number" id="psg" name="psg"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm @error('psg') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('psg')) Form ini kosong!!! @else Masukkan Nilai Biaya PSG @endif">
+                            </div>
+                        </div>
+                        <div class="col-span-full">
+                            <label for="semester_ganjil"
+                                class="block text-sm font-medium leading-6 text-gray-900 mb-3">Keterangan
+                            </label>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 @error('keterangan') border-rose-500 @enderror rounded-l-md">
+                                    Rp.
+                                </span>
+
+                                <input type="text" id="keterangan" name="keterangan"
+                                    class="rounded-none rounded-r-lg  border text-gray-900 block flex-1 min-w-0 w-full text-sm @error('keterangan') border-rose-500 @enderror p-2.5"
+                                    placeholder="@if ($errors->has('keterangan')) Form ini kosong!!! @else Masukkan Keterangan @endif">
                             </div>
                         </div>
 
