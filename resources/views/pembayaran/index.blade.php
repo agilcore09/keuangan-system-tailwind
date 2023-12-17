@@ -123,28 +123,28 @@
                             <table class="w-full table">
                                 <thead>
                                     <tr
-                                        class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                                        <th class="px-4 py-3">Nama Siswa</th>
-                                        <th class="px-4 py-3">Kelas</th>
-                                        <th class="px-4 py-3">NIS</th>
-                                        <th class="px-4 py-3">NISN</th>
-                                        <th class="px-4 py-3">Jurusan</th>
-                                        <th class="px-4 py-3">Pembangunan</th>
-                                        <th class="px-4 py-3">Tunggakan</th>
-                                        <th class="px-4 py-3">SPP</th>
-                                        <th class="px-4 py-3">LAB</th>
-                                        <th class="px-4 py-3">OSIS</th>
-                                        <th class="px-4 py-3">Semester Ganjil</th>
-                                        <th class="px-4 py-3">Semester Genap</th>
-                                        <th class="px-4 py-3">PSG</th>
-                                        <th class="px-4 py-3">UAS</th>
-                                        <th class="px-4 py-3">alumni</th>
+                                        class="text-md font-semibold tracking-wide text-center text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                                        <th class="px-20 py-3">Nama Siswa</th>
+                                        <th class="px-20 py-3">Kelas</th>
+                                        <th class="px-20 py-3">NIS</th>
+                                        <th class="px-20 py-3">NISN</th>
+                                        <th class="px-20 py-3">Jurusan</th>
+                                        <th class="px-20 py-3">Pembangunan</th>
+                                        <th class="px-20 py-3">Tunggakan</th>
+                                        <th class="px-20 py-3">SPP</th>
+                                        <th class="px-20 py-3">LAB</th>
+                                        <th class="px-20 py-3">OSIS</th>
+                                        <th class="px-20 py-3">Semester Ganjil</th>
+                                        <th class="px-20 py-3">Semester Genap</th>
+                                        <th class="px-20 py-3">PSG</th>
+                                        <th class="px-20 py-3">UAS</th>
+                                        <th class="px-20 py-3">Keterangan</th>
                                     </tr>
                                 </thead>
 
                                 <tbody class="bg-white" id="tbody">
                                     @foreach ($data as $item)
-                                        <tr class="text-gray-700">
+                                        <tr class="text-gray-700 text-center">
                                             <td class="px-4 py-3 text-ms border">
                                                 {{ $item->Siswa->nama_siswa }}
                                             </td>
@@ -156,15 +156,15 @@
                                             <td class="px-4 py-3 text-ms border">
                                                 {{ $item->Siswa->Category->nama_jurusan }}</td>
                                             <td class="px-4 py-3 text-ms border">Rp. {{ $item->pembangunan }}</td>
-                                            <td class="px-4 py-3 text-ms border">Ahmaasdasdasdd</td>
-                                            <td class="px-4 py-3 text-ms border">Ahmdasdasad</td>
-                                            <td class="px-4 py-3 text-ms border">Ahmasdasad</td>
-                                            <td class="px-4 py-3 text-ms border">Ahmdasdad</td>
-                                            <td class="px-4 py-3 text-ms border">Ahmdasdasdad</td>
-                                            <td class="px-4 py-3 text-ms border">Ahmasdasdad</td>
-                                            <td class="px-4 py-3 text-ms border">Ahmasdasdad</td>
-                                            <td class="px-4 py-3 text-ms border">Ahmasdasdasad</td>
-                                            <td class="px-4 py-3 text-ms border">Ahmdasdasdasdad</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. {{ $item->tunggakan }}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. {{ $item->spp }}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. {{ $item->lab }}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. {{ $item->osis }}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. {{ $item->semester_ganjil }}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. {{ $item->semester_genap }}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. {{ $item->psg }}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. {{ $item->lab }}</td>
+                                            <td class="px-4 py-3 text-ms border">{{ $item->keterangan }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
