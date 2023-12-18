@@ -18,7 +18,6 @@ class PembayaranController extends Controller
         $nama_siswa = DB::table('siswa')->get();
         $nama_jurusan = DB::table('category')->get();
         $kelas_siswa = DB::table('type')->get();
-
         $data = PembayaranModel::all();
         return view('pembayaran.index', compact("nama_siswa", "nama_jurusan", "kelas_siswa", "data"));
     }
@@ -89,9 +88,11 @@ class PembayaranController extends Controller
      * @param  \App\Models\PembayaranModel  $pembayaranModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(PembayaranModel $pembayaranModel)
+    public function edit(PembayaranModel $pembayaranModel, $id)
     {
-        //
+        $data = $pembayaranModel->find($id);
+        $nama_siswa = DB::table('siswa')->get();
+        return view('pembayaran.update', compact("data", "nama_siswa"));
     }
 
     /**
@@ -112,8 +113,10 @@ class PembayaranController extends Controller
      * @param  \App\Models\PembayaranModel  $pembayaranModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PembayaranModel $pembayaranModel)
+    public function destroy(PembayaranModel $pembayaranModel, $id)
     {
-        //
+
+        $pembayaranModel->where('id', '=', $id)->delete();
+        return redirect()->to("/pembayaran")->with("success", "Berhasil Menghapus Data");
     }
 }

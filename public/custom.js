@@ -18,11 +18,17 @@ $("#tombol-add").on("click", function (event) {
 $("#btn-add-pembayaran").on("click", function (event) {
     event.preventDefault();
     $('.display-add').fadeIn("slow");
+    $('.table-pembayaran').hide();
 });
 
 
 $('#button-cancel').on('click', function () {
     $('.display-add').fadeOut("slow");
+})
+
+$('#button-cancel-pembayaran').on('click', function () {
+    $('.display-add').hide("slow");
+    $('.table-pembayaran').fadeIn("slow");
 })
 
 
