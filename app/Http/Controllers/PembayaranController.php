@@ -18,6 +18,24 @@ class PembayaranController extends Controller
         $nama_siswa = DB::table('siswa')->get();
         $nama_jurusan = DB::table('category')->get();
         $kelas_siswa = DB::table('type')->get();
+
+
+        if ($request->all() != null) {
+            $data = DB::table('siswa')
+                ->join('category', 'siswa.category_id', 'category.id')
+                ->join('type', 'siswa.type_id', 'type.id')
+                ->join('pembayaran', 'pembayaran.siswa_id', 'siswa.id')
+                ->where('siswa.nama_siswa', 'like', '%' . $request->search . '%')
+                ->get();
+
+            return response()->json([
+                "data" => $data,
+                "message" => "berhasil tangkap",
+                "success" => true
+            ]);
+        }
+
+
         $data = PembayaranModel::all();
         return view('pembayaran.index', compact("nama_siswa", "nama_jurusan", "kelas_siswa", "data"));
     }
@@ -102,9 +120,37 @@ class PembayaranController extends Controller
      * @param  \App\Models\PembayaranModel  $pembayaranModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PembayaranModel $pembayaranModel)
+    public function update(Request $request, PembayaranModel $pembayaranModel, $id)
     {
-        //
+        $validated = $request->validate([
+            'nama_siswa' => 'required',
+            'pembangunan' => 'required',
+            'tunggakan' => 'required',
+            'spp' => 'required',
+            'lab' => 'required',
+            'osis' => 'required',
+            'psg' => 'required',
+            'uas' => 'required',
+            'keterangan' => 'required',
+            'semester_ganjil' => 'required',
+            'semester_genap' => 'required',
+        ]);
+
+        $pembayaranModel->find($id)->update([
+            'siswa_id' => (int)$request->nama_siswa,
+            'pembangunan' => $request->pembangunan,
+            'tunggakan' => $request->tunggakan,
+            'spp' => $request->spp,
+            'lab' => $request->lab,
+            'osis' => $request->osis,
+            'psg' => $request->psg,
+            'uas' => $request->uas,
+            'semester_ganjil' => (int)$request->semester_ganjil,
+            'semester_genap' => (int)$request->semester_genap,
+            'keterangan' => $request->keterangan,
+        ]);
+
+        return redirect()->to('/pembayaran')->with('success', 'Berhasil Memperbarui Data Pembayaran');
     }
 
     /**

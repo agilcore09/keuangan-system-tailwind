@@ -1,9 +1,9 @@
 @extends('core.index')
 @section('content')
     <div class="container display-add bg-white shadow-xl p-9">
-        <form method="POST" action="{{ url('pembayaran') }}" id="form-update">
+        <form method="POST" action="{{ url('pembayaran' . '/' . $data->id) }}" id="form-update">
             @csrf
-            @method('POST')
+            @method('PATCH')
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">form Input Pembayaran</h2>
@@ -24,7 +24,7 @@
                             <div class="mt-3">
                                 <select id="nama_siswa" name="nama_siswa" autocomplete="off"
                                     class="rounded-lg nama_siswa  border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5">
-                                    <option value="{{ $data->id }}">{{ $data->Siswa->nama_siswa }}</option>
+                                    <option value="{{ $data->Siswa->id }}">{{ $data->Siswa->nama_siswa }}</option>
                                     @foreach ($nama_siswa as $item)
                                         <option value="{{ $item->id }}">
                                             {{ $item->nama_siswa }}

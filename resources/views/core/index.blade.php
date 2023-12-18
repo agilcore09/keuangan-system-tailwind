@@ -145,6 +145,70 @@
                 }
             })
         })
+
+
+        // pencarian by nis
+        $('#search-nis').on('input', () => {
+            let search = $('#search-nis').val();
+            console.log(search)
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: `/pembayaran?search=${search}`,
+                type: 'GET',
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    const tbody = $('#tbody');
+                    const data = response.data;
+                    tbody.empty()
+
+                    if (search != "" || search != null || search != empty) {
+                        for (const datas of data) {
+                            tbody.append(`
+                                           <tr class="text-gray-700 text-center">
+                                            <td class="px-4 py-3 text-ms border">
+                                              ${datas.nama_siswa}
+                                            </td>
+                                            <td class="px-4 py-3 text-ms border">
+                                               ${datas.kelas}
+                                            </td>
+                                            <td class="px-4 py-3 text-ms border">${datas.nis}</td>
+                                            <td class="px-4 py-3 text-ms border">${datas.nisn}</td>
+                                            <td class="px-4 py-3 text-ms border">
+                                               ${datas.nama_jurusan}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. ${datas.pembangunan}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. ${datas.tunggakan}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. ${datas.spp}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. ${datas.lab}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. ${datas.osis}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. ${datas.semester_ganjil}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. ${datas.semester_genap}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. ${datas.psg}</td>
+                                            <td class="px-4 py-3 text-ms border">Rp. ${datas.lab}</td>
+                                            <td class="px-4 py-3 text-ms border">${datas.keterangan}</td>
+                                            <td class="px-4 py-3 text-ms border">
+                                                <div class="flex justify-center">
+                                                    <a href="/pembayaran/${datas.id}/edit"><i
+                                                            class="fa-solid fa-circle-info text-green-500 mr-1  "></i></a>
+                                                    <form action="/pembayaran/${datas.id}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"> <i
+                                                                class="fa-solid fa-trash text-red-600 ml-1"></i></button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        `)
+                        }
+                    }
+
+                }
+            })
+        })
     </script>
 
 
