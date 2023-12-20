@@ -128,6 +128,7 @@
                                 <thead class="sticky top-0">
                                     <tr
                                         class="text-md font-semibold tracking-wide text-center text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                                        <th class="px-20 py-3">Tanggal Bayar</th>
                                         <th class="px-20 py-3">Nama Siswa</th>
                                         <th class="px-20 py-3">Kelas</th>
                                         <th class="px-20 py-3">NIS</th>
@@ -150,6 +151,9 @@
                                 <tbody class="bg-white" id="tbody">
                                     @foreach ($data as $item)
                                         <tr class="text-gray-700 text-center">
+                                            <td class="px-4 py-3 text-ms border">
+                                                {{ $item->tanggal_bayar }}
+                                            </td>
                                             <td class="px-4 py-3 text-ms border">
                                                 {{ $item->Siswa->nama_siswa }}
                                             </td>

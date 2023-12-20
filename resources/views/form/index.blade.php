@@ -152,17 +152,20 @@
                                             <td class="px-4 py-3 text-sm border">{{ $item->Type->type_name }}</td>
                                             <td class="px-4 py-3 text-sm border">
                                                 <div class="flex justify-center">
+                                                    <a href="{{ url('/data-siswa' . '/' . $item->nis) }}"><i
+                                                            class="fa-solid fa-circle-info ml-1 mr-1 text-blue-500 hover:text-blue-900"></i></a>
                                                     <form action="{{ url('/data-siswa' . '/' . $item->nis) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"><i
-                                                                class="fa-solid fa-trash mr-1 text-red-500 hover:text-red-900"></i></button>
+                                                                class="fa-solid fa-trash ml-1 mr-1 text-red-500 hover:text-red-900"></i></button>
                                                     </form>
                                                     <a href="{{ url('/data-siswa' . '/' . $item->nis) . '/edit' }}"
                                                         class="btn-update"><i
                                                             class="fa-solid
                                                         fa-pen ml-1 text-green-500 hover:text-green-900"></i></a>
+
                                                 </div>
                                             </td>
                                         </tr>
