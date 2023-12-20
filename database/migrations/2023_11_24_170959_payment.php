@@ -28,6 +28,8 @@ return new class extends Migration
             $table->integer('uas')->nullable();
             $table->integer('alumni')->nullable();
             $table->string('keterangan')->nullable();
+            $table->date('tanggal_bayar')->nullable();
+            $table->date('tanggal_update')->nullable();
             $table->unsignedBigInteger('siswa_id');
             $table->foreign('siswa_id')->references('id')->on('siswa');
             $table->timestamps();

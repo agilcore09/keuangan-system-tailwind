@@ -47,7 +47,6 @@
                         d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z" />
                 </svg>
                 <p>{{ session()->get('success') }}</p>
-
                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton">
                     <svg class="fill-current h-6 w-6 text-white" role="button" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20">
@@ -59,7 +58,6 @@
             </div>
         </div>
     @endif
-
     {{-- dashboard table view --}}
     <div class="container mt-9 display-table">
         <div class="px-6 grid grid-cols-10">
@@ -75,12 +73,11 @@
                 <div>
                     <form action="" class="ml-3 mx-auto flex">
                         <div class="mr-1">
-                            <input type="date" id="tanggal" name="tanggal"
+                            <input type="date" id="tanggal1" name="tanggal1"
                                 class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
-
                         </div>
                         <div class="ml-1">
-                            <input type="date" id="tanggal" name="tanggal"
+                            <input type="date" id="tanggal2" name="tanggal2"
                                 class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
 
                         </div>
@@ -104,11 +101,9 @@
                                 <path
                                     d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
                             </svg>
-
                         </button>
                     </div>
                 </div>
-
             </div>
             {{-- end section --}}
         </div>

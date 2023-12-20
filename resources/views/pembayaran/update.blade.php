@@ -15,8 +15,6 @@
                     </div>
                     {{-- end alert section --}}
 
-
-
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
                         <div class="col-span-full">
                             <label for="jurusan" class="block text-sm font-medium leading-6 text-gray-900">Pilih
