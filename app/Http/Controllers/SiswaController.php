@@ -37,7 +37,6 @@ class SiswaController extends Controller
             ]);
         }
         return view('form.index', compact("data", "jurusan", "kelasSiswa"));
-        // return view('form.index', compact("data", "jurusan", "kelasSiswa"));
     }
 
     /**
@@ -131,10 +130,10 @@ class SiswaController extends Controller
      * @param  \App\Models\SiswaModel  $siswaModel
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, SiswaModel $siswaModel, $nis)
     {
         // update data siswa
-
         $validated = $request->validate([
             'nama_siswa' => 'required|max:50',
             'kelas' => 'required|max:20',
@@ -161,10 +160,38 @@ class SiswaController extends Controller
      * @param  \App\Models\SiswaModel  $siswaModel
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(SiswaModel $siswaModel, $nis)
     {
         $data = $siswaModel::where('nis', '=', $nis)->delete();
         Alert::success('Sukses', 'Berhasil Menghapus Data');
         return redirect()->to('/data-siswa')->with('success', 'Berhasil Menghapus Data');
+    }
+
+    public function ShowProfile(SiswaModel $siswa, $nis)
+    {
+        $nis = $nis;
+        $data = DB::table('siswa')
+            ->join('pembayaran', 'pembayaran.siswa_id', 'siswa.id')
+            ->join('category', 'siswa.category_id', 'category.id')
+            ->where('nis', '=', $nis)
+            ->limit(5)
+            ->get();
+        return view('form.profile', compact("data", "nis"));
+    }
+
+    public function ShowTagihan(SiswaModel $siswa, $nis)
+    {
+        $data = DB::table('siswa')
+            ->join('pembayaran', 'pembayaran.siswa_id', 'siswa.id')
+            ->join('category', 'siswa.category_id', 'category.id')
+            ->where('nis', '=', $nis)
+            ->limit(5)
+            ->get();
+
+
+
+
+        return view('form.tagihan', compact("data"));
     }
 }

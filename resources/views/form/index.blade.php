@@ -152,7 +152,7 @@
                                             <td class="px-4 py-3 text-sm border">{{ $item->Type->type_name }}</td>
                                             <td class="px-4 py-3 text-sm border">
                                                 <div class="flex justify-center">
-                                                    <a href="{{ url('/data-siswa' . '/' . $item->nis) }}"><i
+                                                    <a href="{{ url('/data-siswa' . '/profile' . '/' . $item->nis) }}"><i
                                                             class="fa-solid fa-circle-info ml-1 mr-1 text-blue-500 hover:text-blue-900"></i></a>
                                                     <form action="{{ url('/data-siswa' . '/' . $item->nis) }}"
                                                         method="post">

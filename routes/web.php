@@ -10,6 +10,8 @@ Route::middleware('auth', 'verified')->group(function () {
         return view('core.dashboard');
     });
     Route::resource('/data-siswa', SiswaController::class);
+    Route::get('/data-siswa/profile/{nis}', [SiswaController::class, 'ShowProfile']);
+    Route::get('/tagihan/{nis}', [SiswaController::class, 'ShowTagihan']);
     Route::resource('/pembayaran', PembayaranController::class);
 });
 
