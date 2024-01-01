@@ -34,7 +34,6 @@
                                     class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900">
                                     Buat Tagihan</h6>
                             </div>
-
                         </div>
                     </nav>
                 </div>

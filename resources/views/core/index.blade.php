@@ -169,6 +169,9 @@
                             tbody.append(`
                                            <tr class="text-gray-700 text-center">
                                             <td class="px-4 py-3 text-ms border">
+                                            ${datas.tanggal_bayar}
+                                            </td>
+                                            <td class="px-4 py-3 text-ms border">
                                               ${datas.nama_siswa}
                                             </td>
                                             <td class="px-4 py-3 text-ms border">
@@ -232,6 +235,9 @@
                         for (const datas of data) {
                             tbody.append(`
                                        <tr class="text-gray-700 text-center">
+                                        <td class="px-4 py-3 text-ms border">
+                                          ${datas.tanggal_bayar}
+                                        </td>
                                         <td class="px-4 py-3 text-ms border">
                                           ${datas.nama_siswa}
                                         </td>
