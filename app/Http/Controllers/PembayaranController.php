@@ -26,6 +26,7 @@ class PembayaranController extends Controller
                 ->join('type', 'siswa.type_id', 'type.id')
                 ->join('pembayaran', 'pembayaran.siswa_id', 'siswa.id')
                 ->where('siswa.nama_siswa', 'like', '%' . $request->search . '%')
+                ->orderBy('pembayaran.tanggal_bayar', 'DESC')
                 ->get();
 
             return response()->json([
@@ -41,6 +42,7 @@ class PembayaranController extends Controller
                 ->join('type', 'siswa.type_id', 'type.id')
                 ->join('pembayaran', 'pembayaran.siswa_id', 'siswa.id')
                 ->whereBetween('pembayaran.tanggal_bayar', [$request->tanggal1, $request->tanggal2])
+                ->orderBy('pembayaran.tanggal_bayar', 'DESC')
                 ->get();
 
             return response()->json([
@@ -50,8 +52,7 @@ class PembayaranController extends Controller
             ]);
         }
 
-
-        $data = PembayaranModel::all();
+        $data = PembayaranModel::orderBy('pembayaran.tanggal_bayar', 'DESC')->get();
         return view('pembayaran.index', compact("nama_siswa", "nama_jurusan", "kelas_siswa", "data"));
     }
 
