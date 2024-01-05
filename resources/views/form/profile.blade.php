@@ -2,7 +2,7 @@
 @section('content')
     <div class="bg-white p-8 rounded shadow-md max-w-full">
         <div class="text-center">
-            <img src="{{ asset('foto_siswa/' . $data[0]->gambar) }}" alt="Profile Picture" class="rounded-full mx-auto mb-4">
+            <img src="{{ asset('foto_siswa/' . $data[0]->gambar) }}" alt="Profile Picture" class="rounded-full mx-auto mb-4 h-28 w-28">
             <h2 class="text-xl font-bold">{{ $data[0]->nama_siswa }}</h2>
             <p class="text-gray-500">{{ $data[0]->nis }} | {{ $data[0]->nisn }}</p>
         </div>
@@ -92,7 +92,7 @@
             <div class="flex justify-end pr-5">
                 <button class="bg-sky-500 mr-3 hover:bg-sky-700 text-white px-4 py-2 rounded"><i
                         class="fa-solid fa-left-long"></i>
-                    Kembali
+                   <a href="{{ url('/data-siswa') }}">Kembali</a>
                 </button>
                 <button class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded"><i class="fa-solid fa-wallet"></i>
                     <a href="{{ url('/tagihan' . '/' . $nis) }}">Cetak Tagihan</a>
