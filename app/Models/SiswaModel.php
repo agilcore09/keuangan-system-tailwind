@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Siswamodel extends Model
+class SiswaModel extends Model
 {
+
+    use HasFactory;
+
     protected $table = "siswa";
     protected $guarded = ["id"];
 

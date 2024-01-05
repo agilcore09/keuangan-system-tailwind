@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\PembayaranModel;
+use App\Models\SiswaModel;
+use Database\Factories\PembayaranFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +19,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+
+
         DB::table('users')->insert([
             'name' => "admin",
             'email' => 'root@gmail.com',
@@ -27,5 +34,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TypeSeeder::class,
         ]);
+        $this->call([
+            SiswaSeeder::class,
+        ]);
+
+        PembayaranModel::factory()->count(50)->create();
     }
 }
