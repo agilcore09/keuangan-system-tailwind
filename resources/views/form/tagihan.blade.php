@@ -1,7 +1,7 @@
 @extends('core.index')
 @section('content')
-    <div class="container grid grid-cols-12 bg-white w-full h-screen shadow-md ">
-        <div class="w-full">
+    <div class="container grid grid-cols-12 bg-white w-full h-screen shadow-md px-4">
+        <div class="w-full col-span-12">
             {{-- header section --}}
             <div class="container">
                 <div class="mt-14 px-5">
@@ -39,6 +39,60 @@
                 </div>
             </div>
             {{-- end header section --}}
+
+            <div class="container border rounded-md mt-16">
+                <div class="mt-14 mb-14 px-5">
+                    <div class="header">
+                        <h3 class="text-center font-bold underline  ">SMK PERSADA MAKASSAR</h3>
+                        <h3 class="text-center font-bold">KWITANSI PEMBAYARAN </h3>
+                        <div class="flex justify-between mt-2">
+                            <p class="ml-5 font-bold">NAMA : {{ $nama[0]->nama_siswa }}</p>
+                            <p class="mr-5 font-bold">KELAS : {{ $nama[0]->nis }} / {{ $nama[0]->kelas }}</p>
+                        </div>
+                        <table class="w-full table pembayaran mt-3">
+                            <thead class="sticky top-0">
+                                <tr
+                                    class="text-md font-semibold tracking-wide text-center text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                                    <th class="px-5 py-3">No</th>
+                                    <th class="px-20 py-3">Keterangan Pembayaran</th>
+                                    <th class="px-20 py-3">Jumlah</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="bg-white">
+                                <tr class="text-gray-700 text-center">
+                                    <td class="px-1 py-1 text-ms border">1</td>
+                                    <td class="px-4 py-3 text-ms border">Biaya Pembangunan</td>
+                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                </tr>
+                                <tr class="text-gray-700 text-center">
+                                    <td class="px-1 py-1 text-ms border">2</td>
+                                    <td class="px-4 py-3 text-ms border">Sumbangan Pembinaan Pendidikan (SPP)</td>
+                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                </tr>
+                                <tr class="text-gray-700 text-center">
+                                    <td class="px-1 py-1 text-ms border">3</td>
+                                    <td class="px-4 py-3 text-ms border">Organisasi Siswa Intra Sekolah</td>
+                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                </tr>
+                                <tr class="text-gray-700 text-center">
+                                    <td class="px-1 py-1 text-ms border">4</td>
+                                    <td class="px-4 py-3 text-ms border">Laboratorium (LAB)</td>
+                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                </tr>
+                                <tr class="text-gray-700 text-center">
+                                    <td class="px-1 py-1 text-ms border">5</td>
+                                    <td class="px-4 py-3 text-ms border">Biaya Semester</td>
+                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
 @endsection

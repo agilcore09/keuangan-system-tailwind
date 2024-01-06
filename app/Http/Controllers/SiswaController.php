@@ -188,6 +188,11 @@ class SiswaController extends Controller
             ->where('nis', '=', $nis)
             ->limit(5)
             ->get();
-        return view('form.tagihan', compact("data"));
+
+        $nama = DB::table('siswa')->where('nis', '=', $nis)->get();
+
+
+        //  dd($nama);
+        return view('form.tagihan', compact("data", "nama"));
     }
 }
