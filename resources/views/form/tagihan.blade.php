@@ -1,6 +1,6 @@
 @extends('core.index')
 @section('content')
-    <div class="container grid grid-cols-12 bg-white w-full h-screen shadow-md px-4">
+    <div class="container grid grid-cols-12 bg-white w-full h-full shadow-md px-4">
         <div class="w-full col-span-12">
             {{-- header section --}}
             <div class="container">
@@ -85,11 +85,53 @@
                                     <td class="px-4 py-3 text-ms border">Biaya Semester</td>
                                     <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
                                 </tr>
+                                <tr class="text-gray-700 text-center">
+                                    <td class="px-1 py-1 text-ms border">6</td>
+                                    <td class="px-4 py-3 text-ms border">Pendidikan Sistem Ganda</td>
+                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                </tr>
+                                <tr class="text-gray-700 text-center">
+                                    <td class="px-1 py-1 text-ms border">7</td>
+                                    <td class="px-4 py-3 text-ms border">Ujian Sekolah Dan UKK</td>
+                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                </tr>
+                                <tr class="text-gray-700 text-center">
+                                    <td class="px-1 py-1 text-ms border">8</td>
+                                    <td class="px-4 py-3 text-ms border">Tunggakan dan Alumni
+                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                </tr>
                             </tbody>
 
                         </table>
+
+                        <div class="container grid grid-cols-12 mt-5">
+                            <div class="col-span-6">
+                              <p class="font-bold">Yang Menerima</p>
+                                <p class="font-bold mt-28">
+                                    Muliyadi, S.T., S.Pd., M.M <br> Bendahara
+                                    </p>
+                            </div>
+                            <div class="col-span-6">
+                            <p class="text-end font-bold"> Total : Rp. 1.000.000</p>
+                            <div class="mt-28">
+                                <h4 class="font-bold">Catatan</h4>
+                                <p>- Di simpan sebagai bukti pembayaran yang sah</p>
+                                <p>- Uang yang sudah dibayarkan tidak dapat di minta kembali</p>
+                            </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="container mt-5 mb-5 flex justify-end">
+              <button class="bg-red-500 mr-3 hover:bg-red-700 text-white px-4 py-2 rounded"><i
+                        class="fa-solid fa-left-long"></i>
+                   <a href="{{ url('/data-siswa') }}">Kembali</a>
+                </button>
+               <button class="bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded"><i class="fa-solid fa-print"></i>
+                    <a href="{{ url('/tagihan' . '/') }}">Cetak Tagihan</a>
+                </button>
             </div>
 
         </div>
