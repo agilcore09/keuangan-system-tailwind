@@ -52,7 +52,7 @@
                         <input type="date" id="tanggal1" name="tanggal1"
                             class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
                     </div>
-                    <div class="ml-1">
+                    <div class="ml-1 mr-1">
                         <input type="date" id="tanggal2" name="tanggal2"
                             class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
 
@@ -153,7 +153,7 @@
                         class="fa-solid fa-left-long"></i>
                     <a href="{{ url('/data-siswa') }}">Kembali</a>
                 </button>
-                <button class="bg-slate-500 hover:bg-slate-700 text-white px-4 py-2 rounded"><i
+                <button class="bg-slate-700 hover:bg-slate-900 text-white px-4 py-2 rounded"><i
                         class="fa-solid fa-print"></i>
                     <a href="{{ url('/tagihan' . '/') }}">Cetak Tagihan</a>
                 </button>

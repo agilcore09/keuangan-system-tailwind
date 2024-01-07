@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\PembayaranModel;
 use App\Models\SiswaModel;
 use Illuminate\Http\Request;
 use App\Models\TypeModel;
@@ -191,6 +192,22 @@ class SiswaController extends Controller
 
         $nama = DB::table('siswa')->where('nis', '=', $nis)->get();
 
+        $tagihan = PembayaranModel::join('siswa', 'siswa.id', 'pembayaran.siswa_id')
+            ->where('siswa.nis', '=', $nis)->get();
+
+        $tagihan = $tagihan->toArray();
+
+        $tunggakan = [];
+
+        foreach ($tagihan as $money) {
+
+            //dd($money["tunggakan"]);
+            $tunggakan[] += $money["tunggakan"];
+        }
+
+        dd(collect($tunggakan)->sum());
+
+        //dd($tunggakan);
 
         //  dd($nama);
         return view('form.tagihan', compact("data", "nama"));
