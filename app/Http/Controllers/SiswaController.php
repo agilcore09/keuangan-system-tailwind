@@ -195,7 +195,24 @@ class SiswaController extends Controller
         // menambahkan nilai pengecekan untuk total pembayaran siswa selama 3 tahun sekolah
         $tagihan = PembayaranModel::join('siswa', 'siswa.id', 'pembayaran.siswa_id')
             ->where('siswa.nis', '=', $nis)->get();
+
         $tagihan = $tagihan->toArray();
+
+        // nilai fix dari pembayaran selama 3 tahun
+        $fpembangunan = 1000000;
+        $ftunggakan = 1000000;
+        $fspp = 4320000;
+        $flab = 720000;
+        $fosis = 720000;
+        $fsemester_ganjil = 360000;
+        $fsemester_genap = 360000;
+        $fpsg = 1000000;
+        $fuas = 1000000;
+        $falumni = 1000000;
+
+
+
+        // penampungan nilai masing masing
         $pembangunan = [];
         $tunggakan = [];
         $spp = [];
@@ -219,6 +236,20 @@ class SiswaController extends Controller
             $uas[] += $money["uas"];
             $alumni[] += $money["alumni"];
         }
+
+        // kalkulasi dari nilai fix perhitungan - data dalam array database 
+        $totalPembangunan = $fpembangunan - collect($pembangunan)->sum();
+        $totalTunggakan = $ftunggakan - collect($tunggakan)->sum();
+        $totalSpp = $fspp - collect($spp)->sum();
+        $totalLab = $flab - collect($lab)->sum();
+        $totalOsis = $fosis - collect($osis)->sum();
+        $totalSemesterGanjil = $fsemester_ganjil - collect($semester_ganjil)->sum();
+        $totalSemesterGenap = $fsemester_genap - collect($semester_genap)->sum();
+        $totalPsg = $fpsg - collect($psg)->sum();
+        $totalUas = $fuas - collect($uas)->sum();
+        $totalAlumni = $falumni - collect($alumni)->sum();
+
+
 
         return view('form.tagihan', compact("data", "nama"));
     }
