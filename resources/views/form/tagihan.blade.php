@@ -7,7 +7,7 @@
                 <div class="mt-14 px-5">
                     <nav
                         class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
-                        <div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
+                        <div class="flex  justify-between md:flex-row md:items-center">
                             <div class="capitalize">
                                 <nav aria-label="breadcrumb" class="w-max">
                                     <ol
@@ -35,19 +35,9 @@
                                     class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900">
                                     Buat Tagihan</h6>
 
-                                <p>jjhjhjhjnjj</p>
-                                <div>
-                                    <form action="" class="ml-3 mx-auto flex">
-                                        <div class="mr-1">
-                                            <input type="date" id="tanggal1" name="tanggal1"
-                                                class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
-                                        </div>
-                                        <div class="ml-1">
-                                            <input type="date" id="tanggal2" name="tanggal2"
-                                                class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
 
-                                        </div>
-                                    </form>
+                                <div>
+
                                 </div>
                             </div>
                         </div>
@@ -56,7 +46,25 @@
             </div>
             {{-- end header section --}}
 
-            <div class="container border rounded-md mt-16">
+            <div class="order-date w-full">
+                <form action="" class="mt-5 mx-auto flex">
+                    <div class="mr-1">
+                        <input type="date" id="tanggal1" name="tanggal1"
+                            class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
+                    </div>
+                    <div class="ml-1">
+                        <input type="date" id="tanggal2" name="tanggal2"
+                            class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
+
+                    </div>
+                    <div class="ml-1">
+                        <button type="submit"
+                            class="w-full px-4 py-2 border border-slate-700 text-white bg-slate-700 hover:bg-slate-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">Terapkan</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="container border rounded-md mt-10">
                 <div class="mt-14 mb-14 px-5">
                     <div class="header">
                         <h3 class="text-center font-bold underline  ">SMK PERSADA MAKASSAR</h3>
