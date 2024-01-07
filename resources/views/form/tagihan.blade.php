@@ -87,42 +87,58 @@
                                 <tr class="text-gray-700 text-center">
                                     <td class="px-1 py-1 text-ms border">1</td>
                                     <td class="px-4 py-3 text-ms border">Biaya Pembangunan</td>
-                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                    <td class="px-4 py-3 text-ms border">
+                                        Rp. {{ number_format($totalPembangunan, 0, ',', '.') }}
+                                    </td>
                                 </tr>
                                 <tr class="text-gray-700 text-center">
                                     <td class="px-1 py-1 text-ms border">2</td>
                                     <td class="px-4 py-3 text-ms border">Sumbangan Pembinaan Pendidikan (SPP)</td>
-                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                    <td class="px-4 py-3 text-ms border">
+                                        Rp. {{ number_format($totalSpp, 0, ',', '.') }}
+                                    </td>
                                 </tr>
                                 <tr class="text-gray-700 text-center">
                                     <td class="px-1 py-1 text-ms border">3</td>
                                     <td class="px-4 py-3 text-ms border">Organisasi Siswa Intra Sekolah</td>
-                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                    <td class="px-4 py-3 text-ms border">
+                                        Rp. {{ number_format($totalOsis, 0, ',', '.') }}
+                                    </td>
                                 </tr>
                                 <tr class="text-gray-700 text-center">
                                     <td class="px-1 py-1 text-ms border">4</td>
                                     <td class="px-4 py-3 text-ms border">Laboratorium (LAB)</td>
-                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                    <td class="px-4 py-3 text-ms border">
+                                        Rp. {{ number_format($totalLab, 0, ',', '.') }}
+                                    </td>
                                 </tr>
                                 <tr class="text-gray-700 text-center">
                                     <td class="px-1 py-1 text-ms border">5</td>
                                     <td class="px-4 py-3 text-ms border">Biaya Semester</td>
-                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                    <td class="px-4 py-3 text-ms border">
+                                        Rp. {{ number_format($totalSemesterGanjil, 0, ',', '.') }}
+                                    </td>
                                 </tr>
                                 <tr class="text-gray-700 text-center">
                                     <td class="px-1 py-1 text-ms border">6</td>
                                     <td class="px-4 py-3 text-ms border">Pendidikan Sistem Ganda</td>
-                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                    <td class="px-4 py-3 text-ms border">
+                                        Rp. {{ number_format($totalPsg, 0, ',', '.') }}
+                                    </td>
                                 </tr>
                                 <tr class="text-gray-700 text-center">
                                     <td class="px-1 py-1 text-ms border">7</td>
                                     <td class="px-4 py-3 text-ms border">Ujian Sekolah Dan UKK</td>
-                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                    <td class="px-4 py-3 text-ms border">
+                                        Rp. {{ number_format($totalSemesterGenap, 0, ',', '.') }}
+                                    </td>
                                 </tr>
                                 <tr class="text-gray-700 text-center">
                                     <td class="px-1 py-1 text-ms border">8</td>
                                     <td class="px-4 py-3 text-ms border">Tunggakan dan Alumni
-                                    <td class="px-4 py-3 text-ms border">Rp. 1000.000</td>
+                                    <td class="px-4 py-3 text-ms border">
+                                        Rp. {{ number_format($totalAlumni, 0, ',', '.') }}
+                                    </td>
                                 </tr>
                             </tbody>
 
@@ -136,7 +152,8 @@
                                 </p>
                             </div>
                             <div class="col-span-6">
-                                <p class="text-end font-bold"> Total : Rp. 1.000.000</p>
+                                <p class="text-end font-bold"> Total : Rp. {{ number_format($totalAll, 0, ',', '.') }}
+                                </p>
                                 <div class="mt-28">
                                     <h4 class="font-bold">Catatan</h4>
                                     <p>- Di simpan sebagai bukti pembayaran yang sah</p>
