@@ -192,24 +192,34 @@ class SiswaController extends Controller
 
         $nama = DB::table('siswa')->where('nis', '=', $nis)->get();
 
+        // menambahkan nilai pengecekan untuk total pembayaran siswa selama 3 tahun sekolah
         $tagihan = PembayaranModel::join('siswa', 'siswa.id', 'pembayaran.siswa_id')
             ->where('siswa.nis', '=', $nis)->get();
-
         $tagihan = $tagihan->toArray();
-
+        $pembangunan = [];
         $tunggakan = [];
+        $spp = [];
+        $lab = [];
+        $osis = [];
+        $semester_ganjil = [];
+        $semester_genap = [];
+        $psg = [];
+        $uas = [];
+        $alumni = [];
 
         foreach ($tagihan as $money) {
-
-            //dd($money["tunggakan"]);
             $tunggakan[] += $money["tunggakan"];
+            $pembangunan[] += $money["pembangunan"];
+            $spp[] += $money["spp"];
+            $lab[] += $money["lab"];
+            $osis[] += $money["osis"];
+            $semester_ganjil[] += $money["semester_ganjil"];
+            $semester_genap[] += $money["semester_genap"];
+            $psg[] += $money["psg"];
+            $uas[] += $money["uas"];
+            $alumni[] += $money["alumni"];
         }
 
-        dd(collect($tunggakan)->sum());
-
-        //dd($tunggakan);
-
-        //  dd($nama);
         return view('form.tagihan', compact("data", "nama"));
     }
 }
