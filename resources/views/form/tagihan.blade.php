@@ -172,7 +172,7 @@
                 </button>
                 <button class="bg-slate-700 hover:bg-slate-900 text-white px-4 py-2 rounded"><i
                         class="fa-solid fa-print"></i>
-                    <a href="{{ url('/tagihan' . '/') }}">Cetak Tagihan</a>
+                    <a href="{{ url('/cetak' . '/' . $nama[0]->nis) }}">Cetak Tagihan</a>
                 </button>
                 {{--  --}}
             </div>
