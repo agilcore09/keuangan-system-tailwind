@@ -30,9 +30,25 @@
                                         </li>
                                     </ol>
                                 </nav>
+
                                 <h6
                                     class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900">
                                     Buat Tagihan</h6>
+
+                                <p>jjhjhjhjnjj</p>
+                                <div>
+                                    <form action="" class="ml-3 mx-auto flex">
+                                        <div class="mr-1">
+                                            <input type="date" id="tanggal1" name="tanggal1"
+                                                class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
+                                        </div>
+                                        <div class="ml-1">
+                                            <input type="date" id="tanggal2" name="tanggal2"
+                                                class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
+
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </nav>
@@ -106,18 +122,18 @@
 
                         <div class="container grid grid-cols-12 mt-5">
                             <div class="col-span-6">
-                              <p class="font-bold">Yang Menerima</p>
+                                <p class="font-bold">Yang Menerima</p>
                                 <p class="font-bold mt-28">
                                     Muliyadi, S.T., S.Pd., M.M <br> Bendahara
-                                    </p>
+                                </p>
                             </div>
                             <div class="col-span-6">
-                            <p class="text-end font-bold"> Total : Rp. 1.000.000</p>
-                            <div class="mt-28">
-                                <h4 class="font-bold">Catatan</h4>
-                                <p>- Di simpan sebagai bukti pembayaran yang sah</p>
-                                <p>- Uang yang sudah dibayarkan tidak dapat di minta kembali</p>
-                            </div>
+                                <p class="text-end font-bold"> Total : Rp. 1.000.000</p>
+                                <div class="mt-28">
+                                    <h4 class="font-bold">Catatan</h4>
+                                    <p>- Di simpan sebagai bukti pembayaran yang sah</p>
+                                    <p>- Uang yang sudah dibayarkan tidak dapat di minta kembali</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -125,13 +141,15 @@
             </div>
 
             <div class="container mt-5 mb-5 flex justify-end">
-              <button class="bg-red-500 mr-3 hover:bg-red-700 text-white px-4 py-2 rounded"><i
+                <button class="bg-red-500 mr-3 hover:bg-red-700 text-white px-4 py-2 rounded"><i
                         class="fa-solid fa-left-long"></i>
-                   <a href="{{ url('/data-siswa') }}">Kembali</a>
+                    <a href="{{ url('/data-siswa') }}">Kembali</a>
                 </button>
-               <button class="bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded"><i class="fa-solid fa-print"></i>
+                <button class="bg-slate-500 hover:bg-slate-700 text-white px-4 py-2 rounded"><i
+                        class="fa-solid fa-print"></i>
                     <a href="{{ url('/tagihan' . '/') }}">Cetak Tagihan</a>
                 </button>
+                {{--  --}}
             </div>
 
         </div>
