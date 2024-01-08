@@ -44,25 +44,7 @@
                     </nav>
                 </div>
             </div>
-            {{-- end header section --}}
-
-            <div class="order-date w-full">
-                <form action="" class="mt-5 mx-auto flex">
-                    <div class="mr-1">
-                        <input type="date" id="tanggal1" name="tanggal1"
-                            class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
-                    </div>
-                    <div class="ml-1 mr-1">
-                        <input type="date" id="tanggal2" name="tanggal2"
-                            class="w-full px-4 py-2 border border-gray-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">
-
-                    </div>
-                    <div class="ml-1">
-                        <button type="submit"
-                            class="w-full px-4 py-2 border border-slate-700 text-white bg-slate-700 hover:bg-slate-900 rounded-md shadow-sm focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-200">Terapkan</button>
-                    </div>
-                </form>
-            </div>
+            {{-- end header section --}}    
 
             <div class="container border rounded-md mt-10">
                 <div class="mt-14 mb-14 px-5">
