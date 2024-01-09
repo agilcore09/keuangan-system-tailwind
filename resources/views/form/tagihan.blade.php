@@ -45,9 +45,8 @@
                 </div>
             </div>
             {{-- end header section --}}
-            {{-- sas --}}
 
-            {{-- adjkajsdk --}}
+            {{-- for comit --}}
             <div class="container border rounded-md mt-10">
                 <div class="mt-14 mb-14 px-5">
                     <div class="header">
